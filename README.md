@@ -48,6 +48,8 @@ Find a tool by the work you need to do. Each entry describes its purpose; commer
 
 ## File identification and triage
 
+![Unknown files sorted by their format markers in an inspection tray](.github/section-art/file-triage.png)
+
 - [capa](https://github.com/mandiant/capa) - Identifies capabilities in executable files using rules over static or dynamic analysis results.
 - [Detect It Easy](https://github.com/horsicq/Detect-It-Easy) - Identifies executable formats, compilers, packers, and other file characteristics.
 - [FLOSS](https://github.com/mandiant/flare-floss) - Recovers obfuscated strings, including strings constructed on the stack.
@@ -65,6 +67,8 @@ Find a tool by the work you need to do. Each entry describes its purpose; commer
 - [Rizin](https://github.com/rizinorg/rizin) - Reverse-engineering framework with command-line analysis and reusable libraries.
 
 ## Debugging and instrumentation
+
+![A debugger tracing execution to an orange breakpoint](.github/section-art/debugging.png)
 
 - [Frida](https://github.com/frida/frida) - Injects scripts into running processes to trace calls, inspect data, and change behavior.
 - [GDB](https://www.sourceware.org/gdb/) - Native debugger with scripting and remote-debugging support.
@@ -87,6 +91,8 @@ Find a tool by the work you need to do. Each entry describes its purpose; commer
 
 ## Web and protocols
 
+![A browser displaying a network packet trace](.github/section-art/web-protocols.png)
+
 - [Chrome DevTools](https://developer.chrome.com/docs/devtools/) - Browser tools for stepping through JavaScript, inspecting network requests, and examining runtime state.
 - [mitmproxy](https://github.com/mitmproxy/mitmproxy) - Intercepts, inspects, and modifies HTTP traffic with interactive tools and Python scripts.
 - [WABT](https://github.com/WebAssembly/wabt) - WebAssembly utilities for converting, inspecting, validating, and decompiling modules.
@@ -106,11 +112,15 @@ Find a tool by the work you need to do. Each entry describes its purpose; commer
 
 ## File formats
 
+![A structured file separated into data layers](.github/section-art/file-formats.png)
+
 - [010 Editor](https://www.sweetscape.com/010editor/) - Hex editor with binary templates for inspecting structured files. **Commercial**.
 - [ImHex](https://github.com/WerWolv/ImHex) - Hex editor with a pattern language for describing and exploring binary structures.
 - [Kaitai Struct](https://kaitai.io/) - Describes binary formats declaratively and generates parsers in multiple languages.
 
 ## Diffing and analysis frameworks
+
+![Two binary files compared with a changed block highlighted](.github/section-art/diffing.png)
 
 - [angr](https://github.com/angr/angr) - Python framework for symbolic execution and program analysis.
 - [BinDiff](https://github.com/google/bindiff) - Compares disassembled binaries to identify similar functions and changes between builds.
@@ -121,6 +131,8 @@ Find a tool by the work you need to do. Each entry describes its purpose; commer
 
 ## AI-assisted analysis
 
+![A robot assistant examining a binary file](.github/section-art/ai-analysis.png)
+
 Agent integrations expose existing analysis tools or coordinate an investigation. Check the upstream documentation for required software and supported clients; confirm conclusions against the underlying code and runtime evidence.
 
 - [Ghidra MCP Server](https://github.com/bethington/ghidra-mcp) - Connects AI clients to Ghidra analysis through MCP.
@@ -130,11 +142,15 @@ Agent integrations expose existing analysis tools or coordinate an investigation
 
 ## Practice and communities
 
+![Interlocking challenge tiles beside community chat bubbles](.github/section-art/practice.png)
+
 - [crackmes.one](https://crackmes.one/) - Practice binaries organized by platform, architecture, and difficulty.
 - [FLARE-On](https://flare-on.com/) - Annual reverse-engineering challenge series with previous challenges and solutions.
 - [Reverse Engineering Stack Exchange](https://reverseengineering.stackexchange.com/) - Questions and answers about tools, assembly, executable formats, and analysis techniques.
 
 ## Related lists
+
+![Reference catalogs connected by a chain link](.github/section-art/related-lists.png)
 
 See the [list structure and maintenance review](docs/list-review.md) for a dated comparison of 21 general and specialist collections. Recent activity and popularity are assessed separately there.
 
@@ -147,10 +163,14 @@ See the [list structure and maintenance review](docs/list-review.md) for a dated
 
 ## Contributing and maintenance
 
+![A maintenance checklist beside a wrench](.github/section-art/contributing.png)
+
 Read [CONTRIBUTING.md](CONTRIBUTING.md) to suggest a resource or fix an entry. Prefer canonical project links and descriptions that explain when a resource is useful.
 
 Links are checked on pull requests, pushes to the default branch, and weekly by [GitHub Actions](.github/workflows/links.yml). A passing link check confirms availability, not tool quality or maintenance; review archived projects, compatibility changes, and replacements when updating entries.
 
 ## License
+
+![A shared document with an open padlock](.github/section-art/license.png)
 
 [CC0 1.0](LICENSE). Listed projects retain their own licenses.
