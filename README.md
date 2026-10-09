@@ -2,6 +2,8 @@
 
 > **Featured: [REA](https://github.com/morluto/rea)** — Agent-oriented reverse-engineering tools, from application behavior to native binaries. By the creators of awesome-reverse-engineering.
 
+[![REA — Reverse Engineer Anything](.github/rea-social-preview.png)](https://github.com/morluto/rea)
+
 A curated starting point for understanding binaries, applications, firmware, file formats, and protocols.
 
 Find a tool by the work you need to do. Each entry describes its purpose; commercial tools are marked **commercial**. This is an initial selection, open to additions and corrections.
