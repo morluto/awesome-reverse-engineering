@@ -15,7 +15,10 @@ Find a tool by the work you need to do. Each entry describes its purpose; commer
 | Learn assembly and reversing fundamentals | [Learning](#learning) |
 | Identify an executable and its capabilities | [File identification and triage](#file-identification-and-triage) |
 | Read native code or follow it at runtime | [Native analysis](#native-analysis) and [Debugging and instrumentation](#debugging-and-instrumentation) |
+| Examine a suspicious file, process, or memory image | [Malware analysis](#malware-analysis) |
 | Inspect an APK, .NET assembly, or Java program | [Android and managed code](#android-and-managed-code) |
+| Inspect an iOS app, macOS binary, or Apple firmware | [iOS and macOS](#ios-and-macos) |
+| Unpack a Python, Go, Unity, Godot, or obfuscated .NET program | [Language runtimes and packagers](#language-runtimes-and-packagers) |
 | Understand browser behavior or an undocumented protocol | [Web and protocols](#web-and-protocols) |
 | Extract firmware or inspect a binary format | [Firmware and hardware](#firmware-and-hardware) and [File formats](#file-formats) |
 | Compare builds or automate an investigation | [Diffing and analysis frameworks](#diffing-and-analysis-frameworks) and [AI-assisted analysis](#ai-assisted-analysis) |
@@ -26,7 +29,10 @@ Find a tool by the work you need to do. Each entry describes its purpose; commer
 - [File identification and triage](#file-identification-and-triage)
 - [Native analysis](#native-analysis)
 - [Debugging and instrumentation](#debugging-and-instrumentation)
+- [Malware analysis](#malware-analysis)
 - [Android and managed code](#android-and-managed-code)
+- [iOS and macOS](#ios-and-macos)
+- [Language runtimes and packagers](#language-runtimes-and-packagers)
 - [Web and protocols](#web-and-protocols)
 - [Firmware and hardware](#firmware-and-hardware)
 - [File formats](#file-formats)
@@ -77,6 +83,17 @@ Find a tool by the work you need to do. Each entry describes its purpose; commer
 - [rr](https://github.com/rr-debugger/rr) - Records and replays Linux process execution for repeatable debugging.
 - [x64dbg](https://github.com/x64dbg/x64dbg) - Windows user-mode debugger for inspecting native executables and libraries.
 
+## Malware analysis
+
+Run samples only in isolated, disposable environments, and follow your organization's handling procedures.
+
+- [CAPE Sandbox](https://github.com/kevoreilly/CAPEv2) - Automated sandbox derived from Cuckoo that runs samples in virtual machines and records behavior, unpacked payloads, and malware configurations.
+- [FLARE-VM](https://github.com/mandiant/flare-vm) - Installation scripts that turn a Windows virtual machine into a malware-analysis and reverse-engineering workstation.
+- [PE-sieve](https://github.com/hasherezade/pe-sieve) - Scans a running process for injected or modified code, such as hollowed modules, hooks, and shellcode, and dumps what it finds.
+- [REMnux](https://remnux.org/) - Linux toolkit for analyzing malicious executables, documents, scripts, and network traffic, available as a virtual machine, container, or installer.
+- [Volatility 3](https://github.com/volatilityfoundation/volatility3) - Memory forensics framework for extracting processes, modules, network connections, and other artifacts from memory images.
+- [YARA](https://github.com/VirusTotal/yara) - Identifies and classifies files with rules over strings, byte patterns, and file properties; in maintenance mode, with YARA-X as its successor.
+
 ## Android and managed code
 
 ![A browser and phone exchanging packets](.github/section-art/apps-protocols.png)
@@ -88,6 +105,23 @@ Find a tool by the work you need to do. Each entry describes its purpose; commer
 - [JADX](https://github.com/skylot/jadx) - Android DEX decompiler with code navigation and search in a graphical interface or CLI.
 - [OWASP MASTG](https://mas.owasp.org/MASTG/) - Mobile security testing guidance with Android and iOS reverse-engineering techniques.
 - [Recaf](https://github.com/Col-E/Recaf) - Java bytecode analysis and editing environment.
+
+## iOS and macOS
+
+- [class-dump](https://github.com/nygard/class-dump) - Generates Objective-C headers from Mach-O binaries; unmaintained since 2019 and without Swift support, so `ipsw class-dump` is a maintained alternative.
+- [Hopper](https://www.hopperapp.com/) - macOS disassembler and decompiler with Objective-C and Swift support, LLDB and GDB debugging, and scripting. **Commercial**, with a free demo.
+- [ipsw](https://github.com/blacktop/ipsw) - Command-line toolkit for downloading and examining iOS and macOS firmware, dyld shared caches, kernelcaches, and Mach-O binaries.
+- [objection](https://github.com/sensepost/objection) - Frida-based toolkit for exploring iOS and Android apps at runtime, including class inspection, method hooking, and certificate-pinning bypass.
+
+## Language runtimes and packagers
+
+- [Cpp2IL](https://github.com/SamboyCoding/Cpp2IL) - Recovers types, methods, and IL from Unity IL2CPP builds into .NET assemblies and other outputs; described by its author as work in progress.
+- [de4dot](https://github.com/de4dot/de4dot) - .NET deobfuscator and unpacker for assemblies protected by common obfuscators; archived in 2020 and no longer updated.
+- [GDRE Tools](https://github.com/GDRETools/gdsdecomp) - Recovers Godot projects from exported games, including PCK extraction, GDScript decompilation, and resource conversion.
+- [GoReSym](https://github.com/mandiant/GoReSym) - Recovers function names, types, and build metadata from Go binaries, including stripped ones.
+- [Il2CppDumper](https://github.com/Perfare/Il2CppDumper) - Restores Unity IL2CPP type and method metadata for use in IDA, Ghidra, and other tools; no commits since July 2024, with Cpp2IL as a maintained alternative.
+- [pycdc](https://github.com/zrax/pycdc) - Disassembles and decompiles Python bytecode from `.pyc` files; decompilation of recent Python versions can be incomplete.
+- [pyinstxtractor](https://github.com/extremecoders-re/pyinstxtractor) - Extracts the contents of PyInstaller executables, including the bytecode needed for decompilation.
 
 ## Web and protocols
 
