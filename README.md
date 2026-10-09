@@ -58,6 +58,8 @@ Find a tool by the work you need to do. Each entry describes its purpose; commer
 
 ### Books
 
+<!-- TODO: section art for this heading. Add .github/section-art/books.png (320x213, 8-bit palette PNG in the style of the existing illustrations) and reference it here with alt text. -->
+
 - [Hacking the Xbox](https://www.bunniestudios.com/blog/2013/releasing-free-pdf-of-hacking-the-xbox-in-honor-of-aaron-swartz/) - Introduction to hardware reverse engineering through the original Xbox's security design; free PDF edition released by the author.
 - [Practical Binary Analysis](https://nostarch.com/binaryanalysis) - Covers ELF and PE internals, disassembly, binary instrumentation, taint analysis, and symbolic execution, with tools built in the exercises.
 - [Practical Malware Analysis](https://nostarch.com/malware) - Hands-on introduction to static and dynamic Windows malware analysis with lab exercises; published in 2012, so some tooling chapters are dated.
@@ -107,6 +109,8 @@ Find a tool by the work you need to do. Each entry describes its purpose; commer
 
 ## Malware analysis
 
+<!-- TODO: section art for this heading. Add .github/section-art/malware-analysis.png (320x213, 8-bit palette PNG in the style of the existing illustrations) and reference it here with alt text. -->
+
 Run samples only in isolated, disposable environments, and follow your organization's handling procedures.
 
 - [CAPE Sandbox](https://github.com/kevoreilly/CAPEv2) - Automated sandbox derived from Cuckoo that runs samples in virtual machines and records behavior, unpacked payloads, and malware configurations.
@@ -131,12 +135,16 @@ Run samples only in isolated, disposable environments, and follow your organizat
 
 ## iOS and macOS
 
+<!-- TODO: section art for this heading. Add .github/section-art/ios-macos.png (320x213, 8-bit palette PNG in the style of the existing illustrations) and reference it here with alt text. -->
+
 - [class-dump](https://github.com/nygard/class-dump) - Generates Objective-C headers from Mach-O binaries; unmaintained since 2019 and without Swift support, so `ipsw class-dump` is a maintained alternative.
 - [Hopper](https://www.hopperapp.com/) - macOS disassembler and decompiler with Objective-C and Swift support, LLDB and GDB debugging, and scripting. **Commercial**, with a free demo.
 - [ipsw](https://github.com/blacktop/ipsw) - Command-line toolkit for downloading and examining iOS and macOS firmware, dyld shared caches, kernelcaches, and Mach-O binaries.
 - [objection](https://github.com/sensepost/objection) - Frida-based toolkit for exploring iOS and Android apps at runtime, including class inspection, method hooking, and certificate-pinning bypass.
 
 ## Language runtimes and packagers
+
+<!-- TODO: section art for this heading. Add .github/section-art/language-runtimes.png (320x213, 8-bit palette PNG in the style of the existing illustrations) and reference it here with alt text. -->
 
 - [Cpp2IL](https://github.com/SamboyCoding/Cpp2IL) - Recovers types, methods, and IL from Unity IL2CPP builds into .NET assemblies and other outputs; described by its author as work in progress.
 - [de4dot](https://github.com/de4dot/de4dot) - .NET deobfuscator and unpacker for assemblies protected by common obfuscators; archived in 2020 and no longer updated.
