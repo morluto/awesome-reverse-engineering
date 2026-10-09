@@ -190,7 +190,10 @@ Run samples only in isolated, disposable environments, and follow your organizat
 - [BinDiff](https://github.com/google/bindiff) - Compares disassembled binaries to identify similar functions and changes between builds.
 - [Capstone](https://github.com/capstone-engine/capstone) - Multi-architecture disassembly library for building analysis tools.
 - [Diaphora](https://github.com/joxeankoret/diaphora) - Binary diffing plugin for comparing functions and transferring analysis in IDA.
+- [Miasm](https://github.com/cea-sec/miasm) - Python reverse-engineering framework with an intermediate representation, emulation, symbolic execution, and assemblers and disassemblers for several architectures.
+- [QBDI](https://github.com/QBDI/QBDI) - LLVM-based dynamic binary instrumentation framework for x86, x86-64, ARM, and AArch64, with C, C++, and Python APIs and Frida integration.
 - [Qiling](https://github.com/qilingframework/qiling) - Emulates binaries with operating-system services for scripted runtime analysis.
+- [Triton](https://github.com/JonathanSalwan/Triton) - Dynamic binary analysis library with symbolic execution, taint analysis, and AST representations of instruction semantics, usable from C++ or Python.
 - [Unicorn](https://github.com/unicorn-engine/unicorn) - CPU emulation library for executing and instrumenting machine code across architectures.
 
 ## AI-assisted analysis
@@ -199,7 +202,10 @@ Run samples only in isolated, disposable environments, and follow your organizat
 
 Agent integrations expose existing analysis tools or coordinate an investigation. Check the upstream documentation for required software and supported clients; confirm conclusions against the underlying code and runtime evidence.
 
+- [Binary Ninja MCP Server](https://docs.binary.ninja/guide/mcp.html) - Built-in Binary Ninja server that exposes functions, symbols, strings, disassembly, IL, and decompiled code to MCP clients; the headless variant requires a Commercial or Ultimate license.
+- [Gepetto](https://github.com/JusticeRage/Gepetto) - IDA plugin that asks language models to explain decompiled functions and rename their variables; requires IDA 7.6 or later and access to a supported model provider.
 - [Ghidra MCP Server](https://github.com/bethington/ghidra-mcp) - Connects AI clients to Ghidra analysis through MCP.
+- [GhidraMCP](https://github.com/LaurieWired/GhidraMCP) - Ghidra plugin and MCP server for decompiling, listing, and renaming functions and data; the original project from which Ghidra MCP Server was derived.
 - [IDA Pro MCP](https://github.com/mrexodia/ida-pro-mcp) - Exposes IDA analysis and scripting capabilities to MCP clients; requires a compatible IDA installation.
 - [JADX-AI-MCP](https://github.com/zinja-coder/jadx-ai-mcp) - Connects AI clients to JADX for Android application analysis.
 - [radare2 MCP](https://github.com/radareorg/radare2-mcp) - Provides an MCP interface to radare2 for agent-driven binary analysis.
@@ -210,7 +216,12 @@ Agent integrations expose existing analysis tools or coordinate an investigation
 
 - [crackmes.one](https://crackmes.one/) - Practice binaries organized by platform, architecture, and difficulty.
 - [FLARE-On](https://flare-on.com/) - Annual reverse-engineering challenge series with previous challenges and solutions.
+- [Microcorruption](https://microcorruption.com/) - Browser-based embedded security CTF in which you reverse and exploit firmware for simulated MSP430 lock devices with a built-in debugger.
+- [OALabs](https://www.youtube.com/@OALABS) - Video tutorials on malware reverse engineering, unpacking, and analysis tooling.
+- [picoCTF](https://picoctf.org/) - Free CTF platform from Carnegie Mellon University with beginner-friendly reversing, forensics, and binary exploitation challenges, plus a year-round practice gym.
+- [r/ReverseEngineering](https://www.reddit.com/r/ReverseEngineering/) - Subreddit for sharing reverse-engineering articles, tools, and research.
 - [Reverse Engineering Stack Exchange](https://reverseengineering.stackexchange.com/) - Questions and answers about tools, assembly, executable formats, and analysis techniques.
+- [Root Me](https://www.root-me.org/) - Challenge platform whose categories include binary cracking, app-system exploitation, and forensics.
 
 ## Related lists
 
