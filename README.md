@@ -71,6 +71,9 @@ Find a tool by the work you need to do. Each entry describes its purpose; commer
 - [Detect It Easy](https://github.com/horsicq/Detect-It-Easy) - Identifies executable formats, compilers, packers, and other file characteristics.
 - [FLOSS](https://github.com/mandiant/flare-floss) - Recovers obfuscated strings, including strings constructed on the stack.
 - [LIEF](https://github.com/lief-project/LIEF) - Parses and modifies executable formats such as PE, ELF, and Mach-O from code.
+- [Malcat](https://malcat.fr/) - Hex editor and disassembler for triaging unknown files, with 50+ format parsers, embedded-file extraction, YARA scanning, and Python scripting. **Commercial**, with a free Lite edition for non-professional use.
+- [PE-bear](https://github.com/hasherezade/pe-bear) - Graphical PE viewer and editor for a quick first look at headers, sections, imports, and resources, including malformed files.
+- [pestudio](https://www.winitor.com/) - Flags suspicious imports, strings, resources, and other indicators in Windows executables for initial assessment. **Commercial**, with a free basic edition for private use.
 
 ## Native analysis
 
@@ -78,20 +81,28 @@ Find a tool by the work you need to do. Each entry describes its purpose; commer
 
 - [Binary Ninja](https://binary.ninja/) - Interactive disassembler and decompiler with intermediate representations and scripting APIs. **Commercial**, with a free edition.
 - [Cutter](https://github.com/rizinorg/cutter) - Graphical reverse-engineering interface built on Rizin.
+- [Decompiler Explorer](https://dogbolt.org/) - Web service that runs an uploaded binary through several decompilers and shows their output side by side.
 - [Ghidra](https://github.com/NationalSecurityAgency/ghidra) - Disassembly, decompilation, scripting, and headless analysis for native binaries.
 - [IDA](https://hex-rays.com/ida-pro) - Interactive disassembler and decompiler with processor modules and a plugin ecosystem. **Commercial**, with a free edition.
 - [radare2](https://github.com/radareorg/radare2) - Command-line toolkit for disassembly, binary inspection, debugging, and scripting.
+- [RetDec](https://github.com/avast/retdec) - Retargetable LLVM-based decompiler for ELF, PE, Mach-O, and other formats; in limited maintenance mode, with little new development.
 - [Rizin](https://github.com/rizinorg/rizin) - Reverse-engineering framework with command-line analysis and reusable libraries.
 
 ## Debugging and instrumentation
 
 ![A debugger tracing execution to an orange breakpoint](.github/section-art/debugging.png)
 
+- [Cheat Engine](https://github.com/cheat-engine/cheat-engine) - Memory scanner, debugger, and disassembler for finding and changing values in running processes, mainly used for game and application modding.
+- [DynamoRIO](https://github.com/DynamoRIO/dynamorio) - Dynamic binary instrumentation platform for building tools that observe or modify instructions at runtime, with bundled tracing and memory-checking tools.
 - [Frida](https://github.com/frida/frida) - Injects scripts into running processes to trace calls, inspect data, and change behavior.
 - [GDB](https://www.sourceware.org/gdb/) - Native debugger with scripting and remote-debugging support.
+- [GEF](https://github.com/hugsy/gef) - Single-file GDB extension that adds context views, heap inspection, and commands for exploit development and binary analysis.
+- [Intel Pin](https://www.intel.com/content/www/us/en/developer/articles/tool/pin-a-dynamic-binary-instrumentation-tool.html) - Dynamic binary instrumentation framework for writing analysis tools for x86 and x86-64 programs on Linux and Windows; closed source, free for any use.
 - [LLDB](https://lldb.llvm.org/) - LLVM debugger for native programs, including macOS and iOS development workflows.
 - [pwndbg](https://github.com/pwndbg/pwndbg) - Debugger extensions for inspecting memory, assembly, and runtime state during binary analysis.
 - [rr](https://github.com/rr-debugger/rr) - Records and replays Linux process execution for repeatable debugging.
+- [Sysinternals Suite](https://learn.microsoft.com/en-us/sysinternals/) - Microsoft utilities, including Process Monitor, Process Explorer, and Autoruns, for observing process, file, registry, and network activity on Windows.
+- [WinDbg](https://learn.microsoft.com/en-us/windows-hardware/drivers/debugger/) - Microsoft debugger for Windows user-mode and kernel debugging, crash dump analysis, and Time Travel Debugging.
 - [x64dbg](https://github.com/x64dbg/x64dbg) - Windows user-mode debugger for inspecting native executables and libraries.
 
 ## Malware analysis
