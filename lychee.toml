@@ -5,7 +5,9 @@ timeout = 30
 
 # Documentation examples are not catalog entries.
 # intel.com returns 403 to automated clients; the Pin page was verified manually.
+# reddit.com returns 403 to GitHub Actions runners; the subreddit resolves elsewhere.
 exclude = [
   '^https://example\.com/',
   '^https://www\.intel\.com/content/www/us/en/developer/articles/tool/pin-a-dynamic-binary-instrumentation-tool\.html$',
+  '^https://www\.reddit\.com/r/ReverseEngineering/$',
 ]
