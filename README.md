@@ -14,7 +14,8 @@ Find a tool by the work you need to do. Each entry describes its purpose; commer
 | --- | --- |
 | Learn assembly and reversing fundamentals | [Learning](#learning) |
 | Identify an executable and its capabilities | [File identification and triage](#file-identification-and-triage) |
-| Read native code or follow it at runtime | [Native analysis](#native-analysis) and [Debugging and instrumentation](#debugging-and-instrumentation) |
+| Read native code or step through it | [Native analysis](#native-analysis) and [Debuggers](#debuggers) |
+| Trace calls or instrument a running program | [Dynamic instrumentation and tracing](#dynamic-instrumentation-and-tracing) |
 | Examine a suspicious file, process, or memory image | [Malware analysis](#malware-analysis) |
 | Inspect an APK, .NET assembly, or Java program | [Android and managed code](#android-and-managed-code) |
 | Inspect an iOS app, macOS binary, or Apple firmware | [iOS and macOS](#ios-and-macos) |
@@ -29,7 +30,8 @@ Find a tool by the work you need to do. Each entry describes its purpose; commer
   - [Books](#books)
 - [File identification and triage](#file-identification-and-triage)
 - [Native analysis](#native-analysis)
-- [Debugging and instrumentation](#debugging-and-instrumentation)
+- [Debuggers](#debuggers)
+- [Dynamic instrumentation and tracing](#dynamic-instrumentation-and-tracing)
 - [Malware analysis](#malware-analysis)
 - [Android and managed code](#android-and-managed-code)
 - [iOS and macOS](#ios-and-macos)
@@ -90,22 +92,28 @@ Find a tool by the work you need to do. Each entry describes its purpose; commer
 - [RetDec](https://github.com/avast/retdec) - Retargetable LLVM-based decompiler for ELF, PE, Mach-O, and other formats; in limited maintenance mode, with little new development.
 - [Rizin](https://github.com/rizinorg/rizin) - Reverse-engineering framework with command-line analysis and reusable libraries.
 
-## Debugging and instrumentation
+## Debuggers
 
 ![A debugger tracing execution to an orange breakpoint](.github/section-art/debugging.png)
 
 - [Cheat Engine](https://github.com/cheat-engine/cheat-engine) - Memory scanner, debugger, and disassembler for finding and changing values in running processes, mainly used for game and application modding.
-- [DynamoRIO](https://github.com/DynamoRIO/dynamorio) - Dynamic binary instrumentation platform for building tools that observe or modify instructions at runtime, with bundled tracing and memory-checking tools.
-- [Frida](https://github.com/frida/frida) - Injects scripts into running processes to trace calls, inspect data, and change behavior.
 - [GDB](https://www.sourceware.org/gdb/) - Native debugger with scripting and remote-debugging support.
 - [GEF](https://github.com/hugsy/gef) - Single-file GDB extension that adds context views, heap inspection, and commands for exploit development and binary analysis.
-- [Intel Pin](https://www.intel.com/content/www/us/en/developer/articles/tool/pin-a-dynamic-binary-instrumentation-tool.html) - Dynamic binary instrumentation framework for writing analysis tools for x86 and x86-64 programs on Linux and Windows; closed source, free for any use.
 - [LLDB](https://lldb.llvm.org/) - LLVM debugger for native programs, including macOS and iOS development workflows.
 - [pwndbg](https://github.com/pwndbg/pwndbg) - Debugger extensions for inspecting memory, assembly, and runtime state during binary analysis.
 - [rr](https://github.com/rr-debugger/rr) - Records and replays Linux process execution for repeatable debugging.
-- [Sysinternals Suite](https://learn.microsoft.com/en-us/sysinternals/) - Microsoft utilities, including Process Monitor, Process Explorer, and Autoruns, for observing process, file, registry, and network activity on Windows.
 - [WinDbg](https://learn.microsoft.com/en-us/windows-hardware/drivers/debugger/) - Microsoft debugger for Windows user-mode and kernel debugging, crash dump analysis, and Time Travel Debugging.
 - [x64dbg](https://github.com/x64dbg/x64dbg) - Windows user-mode debugger for inspecting native executables and libraries.
+
+## Dynamic instrumentation and tracing
+
+<!-- TODO: section art for this heading. Add .github/section-art/instrumentation.png (320x213, 8-bit palette PNG in the style of the existing illustrations) and reference it here with alt text. -->
+
+- [DynamoRIO](https://github.com/DynamoRIO/dynamorio) - Dynamic binary instrumentation platform for building tools that observe or modify instructions at runtime, with bundled tracing and memory-checking tools.
+- [Frida](https://github.com/frida/frida) - Injects scripts into running processes to trace calls, inspect data, and change behavior.
+- [Intel Pin](https://www.intel.com/content/www/us/en/developer/articles/tool/pin-a-dynamic-binary-instrumentation-tool.html) - Dynamic binary instrumentation framework for writing analysis tools for x86 and x86-64 programs on Linux and Windows; closed source, free for any use.
+- [QBDI](https://github.com/QBDI/QBDI) - LLVM-based dynamic binary instrumentation framework for x86, x86-64, ARM, and AArch64, with C, C++, and Python APIs and Frida integration.
+- [Sysinternals Suite](https://learn.microsoft.com/en-us/sysinternals/) - Microsoft utilities, including Process Monitor, Process Explorer, and Autoruns, for observing process, file, registry, and network activity on Windows.
 
 ## Malware analysis
 
@@ -199,7 +207,6 @@ Run samples only in isolated, disposable environments, and follow your organizat
 - [Capstone](https://github.com/capstone-engine/capstone) - Multi-architecture disassembly library for building analysis tools.
 - [Diaphora](https://github.com/joxeankoret/diaphora) - Binary diffing plugin for comparing functions and transferring analysis in IDA.
 - [Miasm](https://github.com/cea-sec/miasm) - Python reverse-engineering framework with an intermediate representation, emulation, symbolic execution, and assemblers and disassemblers for several architectures.
-- [QBDI](https://github.com/QBDI/QBDI) - LLVM-based dynamic binary instrumentation framework for x86, x86-64, ARM, and AArch64, with C, C++, and Python APIs and Frida integration.
 - [Qiling](https://github.com/qilingframework/qiling) - Emulates binaries with operating-system services for scripted runtime analysis.
 - [Triton](https://github.com/JonathanSalwan/Triton) - Dynamic binary analysis library with symbolic execution, taint analysis, and AST representations of instruction semantics, usable from C++ or Python.
 - [Unicorn](https://github.com/unicorn-engine/unicorn) - CPU emulation library for executing and instrumenting machine code across architectures.
