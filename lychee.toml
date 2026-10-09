@@ -4,4 +4,8 @@ retry_wait_time = 5
 timeout = 30
 
 # Documentation examples are not catalog entries.
-exclude = ['^https://example\.com/']
+# intel.com returns 403 to automated clients; the Pin page was verified manually.
+exclude = [
+  '^https://example\.com/',
+  '^https://www\.intel\.com/content/www/us/en/developer/articles/tool/pin-a-dynamic-binary-instrumentation-tool\.html$',
+]
