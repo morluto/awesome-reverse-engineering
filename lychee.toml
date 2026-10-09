@@ -1,0 +1,7 @@
+max_concurrency = 4
+max_retries = 3
+retry_wait_time = 5
+timeout = 30
+
+# Documentation examples are not catalog entries.
+exclude = ['^https://example\.com/']

@@ -1,0 +1,1209 @@
+{
+  "checked_at": "2026-10-09T14:48:59.201795+00:00",
+  "method": "GitHub repository metadata, default-branch README history, README structure, selected supporting files, and sampled Actions runs. Commit dates can be inherited; pushes can be automated. This snapshot does not score individual tools.",
+  "repositories": [
+    {
+      "repo": "wtsxDev/reverse-engineering",
+      "url": "https://github.com/wtsxDev/reverse-engineering",
+      "stars": 10481,
+      "fork": false,
+      "archived": false,
+      "created_at": "2017-01-15T15:58:21Z",
+      "pushed_at": "2023-07-29T08:23:45Z",
+      "default_branch": "master",
+      "readme_path": "README.md",
+      "readme_url": "https://github.com/wtsxDev/reverse-engineering/blob/master/README.md",
+      "latest_readme_commit": "2019-03-07T20:17:22Z",
+      "root_files": [
+        ".editorconfig",
+        ".gitattributes",
+        ".travis.yml",
+        "README.md",
+        "package.json"
+      ],
+      "github_files": [],
+      "recent_readme_commits": [
+        {
+          "date": "2019-03-07T20:17:22Z",
+          "message": "Merge pull request #21 from volysandro/master",
+          "url": "https://github.com/wtsxDev/reverse-engineering/commit/b25498551c6d7110685896078afeb27097aa1e24",
+          "author": "wtsxDev"
+        },
+        {
+          "date": "2019-03-07T20:17:11Z",
+          "message": "Merge pull request #20 from shaykhsiddique/master",
+          "url": "https://github.com/wtsxDev/reverse-engineering/commit/e196db3f506d4faac7b9dad0c1e697c007e3c89c",
+          "author": "wtsxDev"
+        },
+        {
+          "date": "2019-03-07T20:16:56Z",
+          "message": "Merge pull request #4 from XVilka/patch-1",
+          "url": "https://github.com/wtsxDev/reverse-engineering/commit/c7bc6b8ee35b66a270ee985ce5c6d9f60441308d",
+          "author": "wtsxDev"
+        },
+        {
+          "date": "2019-03-07T11:59:59Z",
+          "message": "Update README.md",
+          "url": "https://github.com/wtsxDev/reverse-engineering/commit/388949234f6cfa2103b83bbc5117c420b71b32e7",
+          "author": "volysandro"
+        }
+      ]
+    },
+    {
+      "repo": "alphaSeclab/awesome-reverse-engineering",
+      "url": "https://github.com/alphaSeclab/awesome-reverse-engineering",
+      "stars": 5088,
+      "fork": false,
+      "archived": false,
+      "created_at": "2019-12-10T05:45:37Z",
+      "pushed_at": "2021-09-01T16:55:49Z",
+      "default_branch": "master",
+      "readme_path": "Readme.md",
+      "readme_url": "https://github.com/alphaSeclab/awesome-reverse-engineering/blob/master/Readme.md",
+      "latest_readme_commit": "2019-12-31T06:04:57Z",
+      "root_files": [
+        ".gitignore",
+        "Readme.md",
+        "Readme_en.md",
+        "Readme_full.md",
+        "Readme_full_en.md",
+        "history"
+      ],
+      "github_files": [],
+      "recent_readme_commits": [
+        {
+          "date": "2019-12-31T06:04:57Z",
+          "message": "refactor structure && remove some sections as standalone repo && add almost 2000 post",
+          "url": "https://github.com/alphaSeclab/awesome-reverse-engineering/commit/1a7445d2c7e3e42350a2556c70b469fb3429d49a",
+          "author": "humblepride"
+        },
+        {
+          "date": "2019-12-23T04:22:13Z",
+          "message": "add 1500 tools and some posts",
+          "url": "https://github.com/alphaSeclab/awesome-reverse-engineering/commit/a17f2544d7676af4cddfe1113f6b6de6bf64833d",
+          "author": "humblepride"
+        },
+        {
+          "date": "2019-12-10T06:04:23Z",
+          "message": "fix desc",
+          "url": "https://github.com/alphaSeclab/awesome-reverse-engineering/commit/1243a5613d5455ec1150631fb09a48b213791ac8",
+          "author": "humblepride"
+        },
+        {
+          "date": "2019-12-10T06:02:22Z",
+          "message": "fix link",
+          "url": "https://github.com/alphaSeclab/awesome-reverse-engineering/commit/b5c0c2348133de79e049e6279733c20bf0ea3e63",
+          "author": "humblepride"
+        }
+      ]
+    },
+    {
+      "repo": "extremecoders-re/re-list",
+      "url": "https://github.com/extremecoders-re/re-list",
+      "stars": 259,
+      "fork": false,
+      "archived": false,
+      "created_at": "2017-10-22T06:49:26Z",
+      "pushed_at": "2024-04-16T10:06:09Z",
+      "default_branch": "master",
+      "readme_path": "README.md",
+      "readme_url": "https://github.com/extremecoders-re/re-list/blob/master/README.md",
+      "latest_readme_commit": "2024-04-16T10:06:09Z",
+      "root_files": [
+        "README.md"
+      ],
+      "github_files": [],
+      "recent_readme_commits": [
+        {
+          "date": "2024-04-16T10:06:09Z",
+          "message": "Add Cannoli",
+          "url": "https://github.com/extremecoders-re/re-list/commit/539b60e6f4a17f42f07089b82c7cd909a1056f6f",
+          "author": "extremecoders-re"
+        },
+        {
+          "date": "2023-06-29T14:23:04Z",
+          "message": "Add VAST",
+          "url": "https://github.com/extremecoders-re/re-list/commit/e7ce0748af84af04f9ba7c5e5cb6449c463af396",
+          "author": "extremecoders-re"
+        },
+        {
+          "date": "2023-05-03T07:41:51Z",
+          "message": "Add TritonDSE",
+          "url": "https://github.com/extremecoders-re/re-list/commit/e5ac0a0c4d158aba9ea2f2a6361d3c859dd5b853",
+          "author": "extremecoders-re"
+        },
+        {
+          "date": "2023-03-25T06:42:37Z",
+          "message": "Add REVEN",
+          "url": "https://github.com/extremecoders-re/re-list/commit/1187153591b047920dad8b0a050bb005c113aa39",
+          "author": "extremecoders-re"
+        }
+      ]
+    },
+    {
+      "repo": "tylerha97/awesome-reversing",
+      "url": "https://github.com/tylerha97/awesome-reversing",
+      "stars": 4527,
+      "fork": false,
+      "archived": false,
+      "created_at": "2016-03-07T03:20:44Z",
+      "pushed_at": "2023-08-19T07:30:45Z",
+      "default_branch": "master",
+      "readme_path": "README.md",
+      "readme_url": "https://github.com/tylerha97/awesome-reversing/blob/master/README.md",
+      "latest_readme_commit": "2019-03-08T00:24:33Z",
+      "root_files": [
+        "README.md"
+      ],
+      "github_files": [],
+      "recent_readme_commits": [
+        {
+          "date": "2019-03-08T00:24:33Z",
+          "message": "fix link",
+          "url": "https://github.com/tylerha97/awesome-reversing/commit/0b7bb2b40797e996578d5175408efc7d6aac5dca",
+          "author": "tylerha97"
+        },
+        {
+          "date": "2019-03-08T00:16:34Z",
+          "message": "add new things fix some broken links",
+          "url": "https://github.com/tylerha97/awesome-reversing/commit/1ab68261b0d8958a3ff1194fd03e15ce57159ad2",
+          "author": "tylerha97"
+        },
+        {
+          "date": "2017-08-07T15:26:26Z",
+          "message": "Added JEB.",
+          "url": "https://github.com/tylerha97/awesome-reversing/commit/b5a69ab3e0ce84d62f1e40bf14f99fed3b6a25dc",
+          "author": "Svieg"
+        },
+        {
+          "date": "2017-06-30T00:57:40Z",
+          "message": "Update README.md",
+          "url": "https://github.com/tylerha97/awesome-reversing/commit/53e5e5d07db7f3ce39dd798f02673dfdecd75054",
+          "author": null
+        }
+      ]
+    },
+    {
+      "repo": "HACKE-RC/awesome-reversing",
+      "url": "https://github.com/HACKE-RC/awesome-reversing",
+      "stars": 1523,
+      "fork": false,
+      "archived": false,
+      "created_at": "2022-12-31T05:45:57Z",
+      "pushed_at": "2025-03-18T15:55:13Z",
+      "default_branch": "main",
+      "readme_path": "README.md",
+      "readme_url": "https://github.com/HACKE-RC/awesome-reversing/blob/main/README.md",
+      "latest_readme_commit": "2025-03-18T15:55:13Z",
+      "root_files": [
+        ".github",
+        "README.md"
+      ],
+      "github_files": [
+        ".github/FUNDING.yml"
+      ],
+      "recent_readme_commits": [
+        {
+          "date": "2025-03-18T15:55:13Z",
+          "message": "Update README.md",
+          "url": "https://github.com/HACKE-RC/awesome-reversing/commit/f2c569eb293364a89e5e573319c25868f3f2fa4d",
+          "author": "HACKE-RC"
+        },
+        {
+          "date": "2024-07-07T14:26:33Z",
+          "message": "Add new item to Assembly Projects section",
+          "url": "https://github.com/HACKE-RC/awesome-reversing/commit/092e5004fa03f7d9d4f528d9ea4f42942382ebd1",
+          "author": "h4r1337"
+        },
+        {
+          "date": "2024-05-19T05:27:21Z",
+          "message": "Updated the order of OS Books as suggested by other people",
+          "url": "https://github.com/HACKE-RC/awesome-reversing/commit/13575f4fcb996f7b75fdd4f674143688b11a9cca",
+          "author": "HACKE-RC"
+        },
+        {
+          "date": "2024-05-10T06:20:39Z",
+          "message": "Add \"Reversing with HyperDbg\" tutorial",
+          "url": "https://github.com/HACKE-RC/awesome-reversing/commit/7edd475b7ecd92cf3318bfdfcd6a4e05bf2f34f2",
+          "author": "SinaKarvandi"
+        }
+      ]
+    },
+    {
+      "repo": "ReversingID/Awesome-Reversing",
+      "url": "https://github.com/ReversingID/Awesome-Reversing",
+      "stars": 734,
+      "fork": false,
+      "archived": false,
+      "created_at": "2019-12-15T07:00:05Z",
+      "pushed_at": "2026-05-27T00:55:28Z",
+      "default_branch": "master",
+      "readme_path": "README.md",
+      "readme_url": "https://github.com/ReversingID/Awesome-Reversing/blob/master/README.md",
+      "latest_readme_commit": "2026-05-27T00:24:48Z",
+      "root_files": [
+        "CONTRIBUTING.md",
+        "LICENSE",
+        "LICENSE.md",
+        "README.md",
+        "database-reversing.md",
+        "format-reversing.md",
+        "hardware-reversing.md",
+        "software-reversing.md"
+      ],
+      "github_files": [],
+      "recent_readme_commits": [
+        {
+          "date": "2026-05-27T00:24:48Z",
+          "message": "update README for more information about the repo",
+          "url": "https://github.com/ReversingID/Awesome-Reversing/commit/0229b0e16002d01ce08e61ecbf09a72d1a3f5b92",
+          "author": null
+        },
+        {
+          "date": "2026-05-26T09:19:00Z",
+          "message": "reorganize the files, rename for better structure",
+          "url": "https://github.com/ReversingID/Awesome-Reversing/commit/7f1a7fdd55e726cacd821ad3911f6112451b0e63",
+          "author": null
+        },
+        {
+          "date": "2020-05-30T03:34:45Z",
+          "message": "Complying to Awesome List requirements",
+          "url": "https://github.com/ReversingID/Awesome-Reversing/commit/f65c2032503709dd37f3b236ad4d6f8f08362306",
+          "author": "xathrya"
+        },
+        {
+          "date": "2020-05-30T02:47:14Z",
+          "message": "Add new topic Database Reverse Engineering",
+          "url": "https://github.com/ReversingID/Awesome-Reversing/commit/b8a3afa6d13b3147030f21521afe6ef2bfc88e60",
+          "author": "xathrya"
+        }
+      ]
+    },
+    {
+      "repo": "ZX41R/awesome-reverse-engineering-and-malware-analysis",
+      "url": "https://github.com/ZX41R/awesome-reverse-engineering-and-malware-analysis",
+      "stars": 94,
+      "fork": false,
+      "archived": false,
+      "created_at": "2026-07-06T12:14:54Z",
+      "pushed_at": "2026-10-02T12:08:45Z",
+      "default_branch": "main",
+      "readme_path": "README.md",
+      "readme_url": "https://github.com/ZX41R/awesome-reverse-engineering-and-malware-analysis/blob/main/README.md",
+      "latest_readme_commit": "2026-08-04T11:26:53Z",
+      "root_files": [
+        ".editorconfig",
+        ".github",
+        ".gitignore",
+        "LICENSE",
+        "README.md",
+        "anti-analysis",
+        "dfir",
+        "exploit-dev",
+        "firmware-embedded",
+        "foundations",
+        "fuzzing",
+        "learning",
+        "living-off-the-land",
+        "lychee.toml",
+        "malware-analysis",
+        "malware-dev",
+        "mobile",
+        "os-internals",
+        "reverse-engineering",
+        "scripts",
+        "threat-intel"
+      ],
+      "github_files": [
+        ".github/banner.png",
+        ".github/social-preview.png"
+      ],
+      "recent_readme_commits": [
+        {
+          "date": "2026-08-04T11:26:53Z",
+          "message": "two forums",
+          "url": "https://github.com/ZX41R/awesome-reverse-engineering-and-malware-analysis/commit/dc993c0a52179350ffcd328ff5c91b9ad8c5a399",
+          "author": "ZX41R"
+        },
+        {
+          "date": "2026-07-13T10:29:12Z",
+          "message": "cleanup",
+          "url": "https://github.com/ZX41R/awesome-reverse-engineering-and-malware-analysis/commit/3e8a3c39b10381c69700367f726a470bd238c5dc",
+          "author": "ZX41R"
+        },
+        {
+          "date": "2026-07-12T23:40:03Z",
+          "message": "awesome title",
+          "url": "https://github.com/ZX41R/awesome-reverse-engineering-and-malware-analysis/commit/7f1a9c8a198b53e597f04d8df972f8346b47a2da",
+          "author": "ZX41R"
+        },
+        {
+          "date": "2026-07-12T23:05:24Z",
+          "message": "readme voice",
+          "url": "https://github.com/ZX41R/awesome-reverse-engineering-and-malware-analysis/commit/f14498a71571d062a68ec02b34194eb11383c7da",
+          "author": "ZX41R"
+        }
+      ]
+    },
+    {
+      "repo": "user1342/Awesome-Android-Reverse-Engineering",
+      "url": "https://github.com/user1342/Awesome-Android-Reverse-Engineering",
+      "stars": 2733,
+      "fork": false,
+      "archived": false,
+      "created_at": "2023-04-09T09:34:47Z",
+      "pushed_at": "2025-07-08T11:52:39Z",
+      "default_branch": "main",
+      "readme_path": "README.md",
+      "readme_url": "https://github.com/user1342/Awesome-Android-Reverse-Engineering/blob/main/README.md",
+      "latest_readme_commit": "2025-07-08T11:52:39Z",
+      "root_files": [
+        ".github",
+        "LICENSE",
+        "README.md",
+        "assets"
+      ],
+      "github_files": [
+        ".github/CHANGE_LOG.md",
+        ".github/CODEOWNERS",
+        ".github/CODE_OF_CONDUCT.md",
+        ".github/CONTRIBUTING.md",
+        ".github/ISSUE_TEMPLATE",
+        ".github/SECURITY.md",
+        ".github/TO_DO.md",
+        ".github/config.yml",
+        ".github/issue_label_bot.yaml",
+        ".github/pull_request_template.md",
+        ".github/py_repo_tools",
+        ".github/settings.yml",
+        ".github/workflows",
+        ".github/workflows/Repo-Generator.yaml"
+      ],
+      "recent_readme_commits": [
+        {
+          "date": "2025-07-08T11:52:39Z",
+          "message": "Update README.md",
+          "url": "https://github.com/user1342/Awesome-Android-Reverse-Engineering/commit/0ade43d6b46ff19675ca4d8b8f1cc098e1af73b8",
+          "author": "user1342"
+        },
+        {
+          "date": "2025-03-15T07:45:04Z",
+          "message": "Update README.md",
+          "url": "https://github.com/user1342/Awesome-Android-Reverse-Engineering/commit/efbdc6dda259e4639b345f33c35a44be1c565d90",
+          "author": "user1342"
+        },
+        {
+          "date": "2025-02-22T04:45:30Z",
+          "message": "Removed on Course",
+          "url": "https://github.com/user1342/Awesome-Android-Reverse-Engineering/commit/1009cd92dbcbbfea65c3b388db30f515240814c1",
+          "author": "DevyDhanish"
+        },
+        {
+          "date": "2024-04-02T08:24:22Z",
+          "message": "Update README.md",
+          "url": "https://github.com/user1342/Awesome-Android-Reverse-Engineering/commit/1b59c830d32af8cb10366f40e41f72522208e8a1",
+          "author": "user1342"
+        }
+      ]
+    },
+    {
+      "repo": "rshipp/awesome-malware-analysis",
+      "url": "https://github.com/rshipp/awesome-malware-analysis",
+      "stars": 14265,
+      "fork": false,
+      "archived": false,
+      "created_at": "2015-05-09T03:39:28Z",
+      "pushed_at": "2024-06-07T05:09:47Z",
+      "default_branch": "main",
+      "readme_path": "README.md",
+      "readme_url": "https://github.com/rshipp/awesome-malware-analysis/blob/main/README.md",
+      "latest_readme_commit": "2024-05-30T14:42:13Z",
+      "root_files": [
+        ".github",
+        ".travis.yml",
+        "CONTRIBUTING.md",
+        "LICENSE",
+        "README.md",
+        "drop.png",
+        "恶意软件分析大合集.md"
+      ],
+      "github_files": [
+        ".github/FUNDING.yml"
+      ],
+      "recent_readme_commits": [
+        {
+          "date": "2024-05-30T14:42:13Z",
+          "message": "Merge pull request #238 from dhondta/main",
+          "url": "https://github.com/rshipp/awesome-malware-analysis/commit/179887b9bfb04bb736348b2dc9d331bc860c6ef7",
+          "author": "PolluxAvenger"
+        },
+        {
+          "date": "2024-05-29T06:50:08Z",
+          "message": "Merge pull request #230 from miller-itsec/patch-1",
+          "url": "https://github.com/rshipp/awesome-malware-analysis/commit/423af8d0b90c2dbefb8ec2575c6a2d3b622b69ea",
+          "author": "PolluxAvenger"
+        },
+        {
+          "date": "2024-05-09T01:42:42Z",
+          "message": "clean or change expired url",
+          "url": "https://github.com/rshipp/awesome-malware-analysis/commit/40b4f992e42536e3636fcf782295f9037276ab1a",
+          "author": "PolluxAvenger"
+        },
+        {
+          "date": "2024-04-24T13:43:47Z",
+          "message": "Merge pull request #225 from BlazerYoo/patch-1",
+          "url": "https://github.com/rshipp/awesome-malware-analysis/commit/45b56e26f08c0366a0927d0c98beb0716428fc50",
+          "author": "PolluxAvenger"
+        }
+      ]
+    },
+    {
+      "repo": "Cy-clon3/awesome-ios-security",
+      "url": "https://github.com/Cy-clon3/awesome-ios-security",
+      "stars": 674,
+      "fork": false,
+      "archived": false,
+      "created_at": "2022-04-10T10:28:56Z",
+      "pushed_at": "2024-01-05T22:14:08Z",
+      "default_branch": "main",
+      "readme_path": "README.md",
+      "readme_url": "https://github.com/Cy-clon3/awesome-ios-security/blob/main/README.md",
+      "latest_readme_commit": "2022-05-30T23:21:11Z",
+      "root_files": [
+        ".github",
+        "LICENSE",
+        "README.md",
+        "contributing.md"
+      ],
+      "github_files": [
+        ".github/workflows",
+        ".github/workflows/main.yml"
+      ],
+      "recent_readme_commits": [
+        {
+          "date": "2022-05-30T23:21:11Z",
+          "message": "Edit Contents",
+          "url": "https://github.com/Cy-clon3/awesome-ios-security/commit/a65370f368a740bbd256429990931dc0664ec782",
+          "author": "Cy-clon3"
+        },
+        {
+          "date": "2022-05-30T22:59:30Z",
+          "message": "Fix awesome-lint error",
+          "url": "https://github.com/Cy-clon3/awesome-ios-security/commit/48b60c3ddcb13b10d341e9cd47c9e592792f9d37",
+          "author": "Cy-clon3"
+        },
+        {
+          "date": "2022-05-30T22:19:47Z",
+          "message": "Added new tool",
+          "url": "https://github.com/Cy-clon3/awesome-ios-security/commit/47375b46e8877d982ec2ccf5402b3e484cef08fb",
+          "author": "Cy-clon3"
+        },
+        {
+          "date": "2022-05-29T21:46:15Z",
+          "message": "Edit links",
+          "url": "https://github.com/Cy-clon3/awesome-ios-security/commit/f8ea46561475013b47f3e78ba7c89bfc1a0c7f08",
+          "author": "Cy-clon3"
+        }
+      ]
+    },
+    {
+      "repo": "PreOS-Security/awesome-firmware-security",
+      "url": "https://github.com/PreOS-Security/awesome-firmware-security",
+      "stars": 618,
+      "fork": false,
+      "archived": false,
+      "created_at": "2016-10-18T19:17:28Z",
+      "pushed_at": "2019-07-24T08:08:00Z",
+      "default_branch": "master",
+      "readme_path": "README.md",
+      "readme_url": "https://github.com/PreOS-Security/awesome-firmware-security/blob/master/README.md",
+      "latest_readme_commit": "2019-07-18T23:57:01Z",
+      "root_files": [
+        "README.md"
+      ],
+      "github_files": [],
+      "recent_readme_commits": [
+        {
+          "date": "2019-07-18T23:57:01Z",
+          "message": "Merge pull request #3 from orangecms/master",
+          "url": "https://github.com/PreOS-Security/awesome-firmware-security/commit/c8daa78da2ec9d746bdbd496b67e28f188ec743b",
+          "author": "Lee-Fisher"
+        },
+        {
+          "date": "2019-07-15T13:20:47Z",
+          "message": "add TXT suite",
+          "url": "https://github.com/PreOS-Security/awesome-firmware-security/commit/587186641510213e6e4644bf5942ac7628d62b23",
+          "author": null
+        },
+        {
+          "date": "2019-02-07T16:11:06Z",
+          "message": "Fix (H)acking Team",
+          "url": "https://github.com/PreOS-Security/awesome-firmware-security/commit/0617914b98e82f5c0106cb6a8bcc7678d33f12d2",
+          "author": "Number0000009"
+        },
+        {
+          "date": "2018-04-30T06:44:45Z",
+          "message": "added disclaimers, still need to break out closed source tools into their section",
+          "url": "https://github.com/PreOS-Security/awesome-firmware-security/commit/39f95a55fef4a93928ab38ce172b95685815c225",
+          "author": "penglish2"
+        }
+      ]
+    },
+    {
+      "repo": "hexsecs/awesome-embedded-security",
+      "url": "https://github.com/hexsecs/awesome-embedded-security",
+      "stars": 64,
+      "fork": false,
+      "archived": false,
+      "created_at": "2022-07-22T16:02:14Z",
+      "pushed_at": "2026-10-07T15:34:52Z",
+      "default_branch": "main",
+      "readme_path": "README.md",
+      "readme_url": "https://github.com/hexsecs/awesome-embedded-security/blob/main/README.md",
+      "latest_readme_commit": "2026-09-30T17:45:37Z",
+      "root_files": [
+        ".github",
+        ".gitignore",
+        ".markdownlint-cli2.jsonc",
+        "LICENSE",
+        "README.md",
+        "SECURITY.md",
+        "contributing.md",
+        "package-lock.json",
+        "package.json",
+        "scripts"
+      ],
+      "github_files": [
+        ".github/CODEOWNERS",
+        ".github/ISSUE_TEMPLATE",
+        ".github/PULL_REQUEST_TEMPLATE.md",
+        ".github/dependabot.yml",
+        ".github/workflows",
+        ".github/workflows/discover-candidates.yml",
+        ".github/workflows/entry-health.yml",
+        ".github/workflows/markdown-lint.yml",
+        ".github/workflows/markdown.links.config.json",
+        ".github/workflows/pr-guidance.yml",
+        ".github/workflows/web-health.yml"
+      ],
+      "recent_readme_commits": [
+        {
+          "date": "2026-09-30T17:45:37Z",
+          "message": "Add Darkmoon to Security Auditing Frameworks (#65)",
+          "url": "https://github.com/hexsecs/awesome-embedded-security/commit/e0091c344e69a2b49858fb7e0edf190032f79e51",
+          "author": "MBK-fr"
+        },
+        {
+          "date": "2026-09-29T11:40:10Z",
+          "message": "Move cyber-controller next to the hardware it controls (#64)",
+          "url": "https://github.com/hexsecs/awesome-embedded-security/commit/5898d59138c29d0b66db861ab5e02881773c0cb7",
+          "author": "hexsecs"
+        },
+        {
+          "date": "2026-09-27T13:11:14Z",
+          "message": "Add eleven entries the discovery search cannot surface (#63)",
+          "url": "https://github.com/hexsecs/awesome-embedded-security/commit/196e20efd4c00cd0ae21230ef9f2d5b35b1efdf4",
+          "author": "hexsecs"
+        },
+        {
+          "date": "2026-09-23T01:45:16Z",
+          "message": "Add cyber-controller and Bjorn, decline ten candidates, and narrow the fault-injection search (#60)",
+          "url": "https://github.com/hexsecs/awesome-embedded-security/commit/2ac95a4ecc593685f6935ddf427078ff0486d1b1",
+          "author": "hexsecs"
+        }
+      ]
+    },
+    {
+      "repo": "VelocityRa/awesome-game-file-format-reversing",
+      "url": "https://github.com/VelocityRa/awesome-game-file-format-reversing",
+      "stars": 220,
+      "fork": false,
+      "archived": false,
+      "created_at": "2025-12-26T13:17:44Z",
+      "pushed_at": "2026-10-03T22:40:43Z",
+      "default_branch": "master",
+      "readme_path": "README.md",
+      "readme_url": "https://github.com/VelocityRa/awesome-game-file-format-reversing/blob/master/README.md",
+      "latest_readme_commit": "2026-10-01T22:54:19Z",
+      "root_files": [
+        ".github",
+        ".lycheeignore",
+        ".nojekyll",
+        ".vscode",
+        "LICENSE",
+        "README.md",
+        "list",
+        "mkdocs.yml",
+        "requirements-docs.txt",
+        "site_build",
+        "site_src"
+      ],
+      "github_files": [
+        ".github/workflows",
+        ".github/workflows/continuous-integration.yml",
+        ".github/workflows/pages.yml"
+      ],
+      "recent_readme_commits": [
+        {
+          "date": "2026-10-01T22:54:19Z",
+          "message": "Split README into a thin index plus list/ part files to fit GitHub's 500 KiB render limit",
+          "url": "https://github.com/VelocityRa/awesome-game-file-format-reversing/commit/abe77040e69b9e9dfb4357ba3dfd23bc4624802d",
+          "author": "VelocityRa"
+        },
+        {
+          "date": "2026-09-25T16:31:29Z",
+          "message": "Add KillzXGaming's BFRES/BNTX ecosystem, Hengle's Super-toolbox/Citric Composer cluster, and today's deferred-author batch (okzach, pmrowla, podshot)",
+          "url": "https://github.com/VelocityRa/awesome-game-file-format-reversing/commit/0de284107431aa38cd16983705e4a6b5ebb3d308",
+          "author": "VelocityRa"
+        },
+        {
+          "date": "2026-09-24T06:34:59Z",
+          "message": "Reposition gba-kit next to GBAHawk and expand its description",
+          "url": "https://github.com/VelocityRa/awesome-game-file-format-reversing/commit/e6715621b7e6c448ec1318b496d0f715ba62c55a",
+          "author": "VelocityRa"
+        },
+        {
+          "date": "2026-09-24T06:34:20Z",
+          "message": "Add asmlift, transmuter and gba-kit (#5)",
+          "url": "https://github.com/VelocityRa/awesome-game-file-format-reversing/commit/9eba094da14ecb23a7c914034258aae0e1335d0c",
+          "author": "macabeus"
+        }
+      ]
+    },
+    {
+      "repo": "DiscoverBox/awesome-ai-reverse",
+      "url": "https://github.com/DiscoverBox/awesome-ai-reverse",
+      "stars": 60,
+      "fork": false,
+      "archived": false,
+      "created_at": "2026-07-12T03:14:27Z",
+      "pushed_at": "2026-10-09T09:03:26Z",
+      "default_branch": "main",
+      "readme_path": "README.md",
+      "readme_url": "https://github.com/DiscoverBox/awesome-ai-reverse/blob/main/README.md",
+      "latest_readme_commit": "2026-10-09T09:03:25Z",
+      "root_files": [
+        ".github",
+        ".gitignore",
+        "LICENSE",
+        "README.md",
+        "README_EN.md",
+        "_config.yml",
+        "scripts",
+        "tests"
+      ],
+      "github_files": [
+        ".github/workflows",
+        ".github/workflows/deploy-pages.yml",
+        ".github/workflows/update-readme-metadata.yml"
+      ],
+      "recent_readme_commits": [
+        {
+          "date": "2026-10-09T09:03:25Z",
+          "message": "docs: update repository metadata",
+          "url": "https://github.com/DiscoverBox/awesome-ai-reverse/commit/4718e2b0e527267bd4ba767f9b41e1b2c9329f85",
+          "author": "github-actions[bot]"
+        },
+        {
+          "date": "2026-10-09T05:53:45Z",
+          "message": "docs: refresh catalog and simplify selection notes",
+          "url": "https://github.com/DiscoverBox/awesome-ai-reverse/commit/02f351d78fc052c6941846465b279ab53abdefcb",
+          "author": "DiscoverBox"
+        },
+        {
+          "date": "2026-10-08T08:57:24Z",
+          "message": "docs: update repository metadata",
+          "url": "https://github.com/DiscoverBox/awesome-ai-reverse/commit/e2e418ab1486a0770cba7538d19cc0376d1c692e",
+          "author": "github-actions[bot]"
+        },
+        {
+          "date": "2026-10-07T08:38:18Z",
+          "message": "docs: update repository metadata",
+          "url": "https://github.com/DiscoverBox/awesome-ai-reverse/commit/bcf1788e516d2154201bc6e89302b6a7a80765e1",
+          "author": "github-actions[bot]"
+        }
+      ]
+    },
+    {
+      "repo": "ram-elgov/awesome-llm-reverse-engineering",
+      "url": "https://github.com/ram-elgov/awesome-llm-reverse-engineering",
+      "stars": 31,
+      "fork": false,
+      "archived": false,
+      "created_at": "2025-07-28T09:59:07Z",
+      "pushed_at": "2025-07-28T12:36:35Z",
+      "default_branch": "main",
+      "readme_path": "README.md",
+      "readme_url": "https://github.com/ram-elgov/awesome-llm-reverse-engineering/blob/main/README.md",
+      "latest_readme_commit": "2025-07-28T12:36:35Z",
+      "root_files": [
+        "README.md"
+      ],
+      "github_files": [],
+      "recent_readme_commits": [
+        {
+          "date": "2025-07-28T12:36:35Z",
+          "message": "Update README.md",
+          "url": "https://github.com/ram-elgov/awesome-llm-reverse-engineering/commit/55366aa3d44526ed0a9d3cb7fa01d4d8227d4631",
+          "author": "ram-elgov"
+        },
+        {
+          "date": "2025-07-28T12:04:48Z",
+          "message": "Update README.md",
+          "url": "https://github.com/ram-elgov/awesome-llm-reverse-engineering/commit/6d0d0fb777736b910b576a927a6f4de482ff28cc",
+          "author": "ram-elgov"
+        },
+        {
+          "date": "2025-07-28T10:41:33Z",
+          "message": "Update README.md",
+          "url": "https://github.com/ram-elgov/awesome-llm-reverse-engineering/commit/7e9aab8a4d0f81e2a44d8b9fdbb58d42ed13e57b",
+          "author": "ram-elgov"
+        },
+        {
+          "date": "2025-07-28T10:03:07Z",
+          "message": "Update README.md",
+          "url": "https://github.com/ram-elgov/awesome-llm-reverse-engineering/commit/ff2fec6f8bd0077d7215ef5bb574ae76fe7c5389",
+          "author": "ram-elgov"
+        }
+      ]
+    },
+    {
+      "repo": "cybersecurity-dev/awesome-reverse-engineering",
+      "url": "https://github.com/cybersecurity-dev/awesome-reverse-engineering",
+      "stars": 5,
+      "fork": false,
+      "archived": false,
+      "created_at": "2025-08-02T22:04:08Z",
+      "pushed_at": "2026-09-17T11:45:47Z",
+      "default_branch": "main",
+      "readme_path": "README.md",
+      "readme_url": "https://github.com/cybersecurity-dev/awesome-reverse-engineering/blob/main/README.md",
+      "latest_readme_commit": "2026-09-17T11:45:09Z",
+      "root_files": [
+        ".gitignore",
+        "Handbook",
+        "LICENSE",
+        "README.md"
+      ],
+      "github_files": [],
+      "recent_readme_commits": [
+        {
+          "date": "2026-09-17T11:45:09Z",
+          "message": "++updated links",
+          "url": "https://github.com/cybersecurity-dev/awesome-reverse-engineering/commit/bfdc3ffc9c704ceef7804f47ef9666740a3bc3c1",
+          "author": "cybersecurity-dev"
+        },
+        {
+          "date": "2026-08-24T13:03:46Z",
+          "message": "++small fix",
+          "url": "https://github.com/cybersecurity-dev/awesome-reverse-engineering/commit/0e924d8e6bf853d11c3de2a2135c6eb1743215cc",
+          "author": "cybersecurity-dev"
+        },
+        {
+          "date": "2026-08-24T13:03:14Z",
+          "message": "++small fix",
+          "url": "https://github.com/cybersecurity-dev/awesome-reverse-engineering/commit/93914a8366ebd369eb44d062459f52f2056cf620",
+          "author": "cybersecurity-dev"
+        },
+        {
+          "date": "2026-08-24T13:02:49Z",
+          "message": "++small fix",
+          "url": "https://github.com/cybersecurity-dev/awesome-reverse-engineering/commit/3c8bc6681f81ed164fe8aef5e44a8ac4be5793b8",
+          "author": "cybersecurity-dev"
+        }
+      ]
+    },
+    {
+      "repo": "TheQmaks/awesome-web-reversing",
+      "url": "https://github.com/TheQmaks/awesome-web-reversing",
+      "stars": 3,
+      "fork": false,
+      "archived": false,
+      "created_at": "2026-08-30T09:13:47Z",
+      "pushed_at": "2026-10-05T13:28:10Z",
+      "default_branch": "main",
+      "readme_path": "README.md",
+      "readme_url": "https://github.com/TheQmaks/awesome-web-reversing/blob/main/README.md",
+      "latest_readme_commit": "2026-09-01T00:38:21Z",
+      "root_files": [
+        ".github",
+        ".gitignore",
+        "CHANGELOG.md",
+        "CONTRIBUTING.md",
+        "LICENSE",
+        "MIRRORS.md",
+        "README.md",
+        "data",
+        "docs",
+        "requirements.txt",
+        "scripts"
+      ],
+      "github_files": [
+        ".github/workflows",
+        ".github/workflows/mirror.yml",
+        ".github/workflows/verify.yml"
+      ],
+      "recent_readme_commits": [
+        {
+          "date": "2026-09-01T00:38:21Z",
+          "message": "catalog: drop vendor-protocol-research entries (datadome-vm, hyper-sdk-py)",
+          "url": "https://github.com/TheQmaks/awesome-web-reversing/commit/e294f97fcd6560f6f7f7bde1ea7cc42b07b8e1f3",
+          "author": "TheQmaks"
+        },
+        {
+          "date": "2026-08-30T09:12:09Z",
+          "message": "feat(catalog): add js-reverse-mcp + WASM2JS-Transpiler, refresh verifier",
+          "url": "https://github.com/TheQmaks/awesome-web-reversing/commit/32d88bc10cfd7d170aab76dd1741a6277a6fe75b",
+          "author": "TheQmaks"
+        },
+        {
+          "date": "2026-07-09T11:50:34Z",
+          "message": "docs: fix script references and stale status stats",
+          "url": "https://github.com/TheQmaks/awesome-web-reversing/commit/cade1024c221e972c74cf8eb72e28e6cba63b58e",
+          "author": "TheQmaks"
+        },
+        {
+          "date": "2026-05-18T09:44:41Z",
+          "message": "chore: initial release — 99 verified tools across 24 categories",
+          "url": "https://github.com/TheQmaks/awesome-web-reversing/commit/c01b2919843c6f1b2abb1711795376ce055a3ac1",
+          "author": "TheQmaks"
+        }
+      ]
+    },
+    {
+      "repo": "user1342/Awesome-Binary-Analysis-Automation",
+      "url": "https://github.com/user1342/Awesome-Binary-Analysis-Automation",
+      "stars": 61,
+      "fork": false,
+      "archived": false,
+      "created_at": "2024-01-06T21:35:11Z",
+      "pushed_at": "2024-04-21T07:06:06Z",
+      "default_branch": "main",
+      "readme_path": "README.md",
+      "readme_url": "https://github.com/user1342/Awesome-Binary-Analysis-Automation/blob/main/README.md",
+      "latest_readme_commit": "2024-04-21T07:06:06Z",
+      "root_files": [
+        "CODE_OF_CONDUCT.md",
+        "LICENSE",
+        "README.md",
+        "cover.gif"
+      ],
+      "github_files": [],
+      "recent_readme_commits": [
+        {
+          "date": "2024-04-21T07:06:06Z",
+          "message": "Update README.md",
+          "url": "https://github.com/user1342/Awesome-Binary-Analysis-Automation/commit/242a56129521b0bd693bbb792fb612ef299974c1",
+          "author": "user1342"
+        },
+        {
+          "date": "2024-04-09T23:07:22Z",
+          "message": "Update README.md",
+          "url": "https://github.com/user1342/Awesome-Binary-Analysis-Automation/commit/89679df535bfbfb102d5cc3bbe29735388d12b6d",
+          "author": "user1342"
+        },
+        {
+          "date": "2024-02-04T18:51:13Z",
+          "message": "Update README.md",
+          "url": "https://github.com/user1342/Awesome-Binary-Analysis-Automation/commit/e162d791b7cb8d3b75a1851921edfb880211b0af",
+          "author": "user1342"
+        },
+        {
+          "date": "2024-01-08T10:51:13Z",
+          "message": "Update README.md",
+          "url": "https://github.com/user1342/Awesome-Binary-Analysis-Automation/commit/8a921f4f5eda20e577fc008c338af4ddb9f5e7be",
+          "author": "user1342"
+        }
+      ]
+    },
+    {
+      "repo": "onethawt/idaplugins-list",
+      "url": "https://github.com/onethawt/idaplugins-list",
+      "stars": 3839,
+      "fork": false,
+      "archived": false,
+      "created_at": "2015-09-16T01:07:03Z",
+      "pushed_at": "2024-05-31T03:28:20Z",
+      "default_branch": "master",
+      "readme_path": "README.md",
+      "readme_url": "https://github.com/onethawt/idaplugins-list/blob/master/README.md",
+      "latest_readme_commit": "2023-05-02T00:37:21Z",
+      "root_files": [
+        "README.md"
+      ],
+      "github_files": [],
+      "recent_readme_commits": [
+        {
+          "date": "2023-05-02T00:37:21Z",
+          "message": "Update README.md",
+          "url": "https://github.com/onethawt/idaplugins-list/commit/decddd9fc3125eee900ec7d1cd3e557acffd26c1",
+          "author": "onethawt"
+        },
+        {
+          "date": "2023-05-02T00:35:46Z",
+          "message": "Merge branch 'master' into senti/MemLoader",
+          "url": "https://github.com/onethawt/idaplugins-list/commit/9283ac6eeb1779cd717f3e6d6386e76657eeb2da",
+          "author": "onethawt"
+        },
+        {
+          "date": "2023-05-02T00:34:31Z",
+          "message": "Merge pull request #79 from ebubekirtrkr/master",
+          "url": "https://github.com/onethawt/idaplugins-list/commit/f3ef0c5756bd875d89b0615610949d6faae838b1",
+          "author": "onethawt"
+        },
+        {
+          "date": "2023-05-02T00:34:23Z",
+          "message": "Merge pull request #81 from alanhamlett/master",
+          "url": "https://github.com/onethawt/idaplugins-list/commit/fc948ddcae1193e17074bdbb9eb8bd21a9dd4411",
+          "author": "onethawt"
+        }
+      ]
+    },
+    {
+      "repo": "AllsafeCyberSecurity/awesome-ghidra",
+      "url": "https://github.com/AllsafeCyberSecurity/awesome-ghidra",
+      "stars": 1435,
+      "fork": false,
+      "archived": false,
+      "created_at": "2019-12-15T02:39:08Z",
+      "pushed_at": "2026-06-18T04:57:29Z",
+      "default_branch": "master",
+      "readme_path": "README.md",
+      "readme_url": "https://github.com/AllsafeCyberSecurity/awesome-ghidra/blob/master/README.md",
+      "latest_readme_commit": "2026-06-18T04:57:19Z",
+      "root_files": [
+        "README.md",
+        "icon-ghidra.png"
+      ],
+      "github_files": [],
+      "recent_readme_commits": [
+        {
+          "date": "2026-06-18T04:57:19Z",
+          "message": "Merge branch 'master' into patch-1",
+          "url": "https://github.com/AllsafeCyberSecurity/awesome-ghidra/commit/9e786ded846e993ab3071cbb31b615cd0f69282d",
+          "author": "pinksawtooth"
+        },
+        {
+          "date": "2026-06-18T04:56:37Z",
+          "message": "Merge branch 'master' into add-printf-inliner-plugin",
+          "url": "https://github.com/AllsafeCyberSecurity/awesome-ghidra/commit/c9abc491c4ea8ca703f0673f3c6b3b9827c3aa32",
+          "author": "pinksawtooth"
+        },
+        {
+          "date": "2026-06-18T04:52:59Z",
+          "message": "Merge branch 'master' into patch-1",
+          "url": "https://github.com/AllsafeCyberSecurity/awesome-ghidra/commit/f594d9da5676632ab8b55d5f84a1c701f09fae02",
+          "author": "pinksawtooth"
+        },
+        {
+          "date": "2026-06-18T04:52:18Z",
+          "message": "Merge branch 'master' into patch-1",
+          "url": "https://github.com/AllsafeCyberSecurity/awesome-ghidra/commit/c55500fadd1551d28808189bc6aebe5d4dd1bc26",
+          "author": "pinksawtooth"
+        }
+      ]
+    },
+    {
+      "repo": "Hack-with-Github/Awesome-Hacking",
+      "url": "https://github.com/Hack-with-Github/Awesome-Hacking",
+      "stars": 122002,
+      "fork": false,
+      "archived": false,
+      "created_at": "2016-03-30T15:47:10Z",
+      "pushed_at": "2026-07-26T03:29:02Z",
+      "default_branch": "master",
+      "readme_path": "README.md",
+      "readme_url": "https://github.com/Hack-with-Github/Awesome-Hacking/blob/master/README.md",
+      "latest_readme_commit": "2026-07-26T03:29:02Z",
+      "root_files": [
+        ".github",
+        "LICENSE",
+        "README.md",
+        "awesome_hacking.webp",
+        "contributing.md"
+      ],
+      "github_files": [
+        ".github/workflows",
+        ".github/workflows/lock-threads.yml"
+      ],
+      "recent_readme_commits": [
+        {
+          "date": "2026-07-26T03:29:02Z",
+          "message": "chore: compress repository banner from PNG to WebP (#235)",
+          "url": "https://github.com/Hack-with-Github/Awesome-Hacking/commit/b2bb13aa69b4f568a1bab0cbb17b7a00a350dc36",
+          "author": "0xbadshah"
+        },
+        {
+          "date": "2026-05-07T16:44:36Z",
+          "message": "redesign the repository banner with a cleaner GitHub-style visual identity (#211)",
+          "url": "https://github.com/Hack-with-Github/Awesome-Hacking/commit/f995379fe1fb87f8f3a981a77c6c601a2a21d50b",
+          "author": "grayguava"
+        },
+        {
+          "date": "2026-04-24T14:00:36Z",
+          "message": "Merge pull request #185 from heit0r/patch-1",
+          "url": "https://github.com/Hack-with-Github/Awesome-Hacking/commit/61e16959a839adb5394eb0c52428a58afd01312c",
+          "author": "heit0r"
+        },
+        {
+          "date": "2026-04-24T13:47:07Z",
+          "message": "Merge branch 'master' into drone-hacking",
+          "url": "https://github.com/Hack-with-Github/Awesome-Hacking/commit/ad62c7d5ecbd378a40f0d311a17f1563f7b9858d",
+          "author": "0xbadshah"
+        }
+      ]
+    }
+  ],
+  "sampled_workflow_runs": [
+    {
+      "repo": "ZX41R/awesome-reverse-engineering-and-malware-analysis",
+      "total_count": 26,
+      "runs": [
+        {
+          "name": "link-check",
+          "created_at": "2026-07-07T15:01:21Z",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "failure",
+          "url": "https://github.com/ZX41R/awesome-reverse-engineering-and-malware-analysis/actions/runs/28876325812"
+        },
+        {
+          "name": "link-check",
+          "created_at": "2026-07-07T12:12:23Z",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "failure",
+          "url": "https://github.com/ZX41R/awesome-reverse-engineering-and-malware-analysis/actions/runs/28865175156"
+        },
+        {
+          "name": "link-check",
+          "created_at": "2026-07-07T12:01:10Z",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "failure",
+          "url": "https://github.com/ZX41R/awesome-reverse-engineering-and-malware-analysis/actions/runs/28864521401"
+        }
+      ]
+    },
+    {
+      "repo": "hexsecs/awesome-embedded-security",
+      "total_count": 279,
+      "runs": [
+        {
+          "name": "Entry Health",
+          "created_at": "2026-10-08T12:44:34Z",
+          "event": "schedule",
+          "status": "completed",
+          "conclusion": "success",
+          "url": "https://github.com/hexsecs/awesome-embedded-security/actions/runs/37779052272"
+        },
+        {
+          "name": "PR Guidance",
+          "created_at": "2026-10-07T15:38:33Z",
+          "event": "workflow_run",
+          "status": "completed",
+          "conclusion": "skipped",
+          "url": "https://github.com/hexsecs/awesome-embedded-security/actions/runs/37645559561"
+        },
+        {
+          "name": "PR Guidance",
+          "created_at": "2026-10-07T15:37:38Z",
+          "event": "workflow_run",
+          "status": "completed",
+          "conclusion": "success",
+          "url": "https://github.com/hexsecs/awesome-embedded-security/actions/runs/37645435162"
+        }
+      ]
+    },
+    {
+      "repo": "VelocityRa/awesome-game-file-format-reversing",
+      "total_count": 448,
+      "runs": [
+        {
+          "name": "Running tests on \"refs/heads/master\" by \"VelocityRa\"",
+          "created_at": "2026-10-03T22:40:45Z",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "failure",
+          "url": "https://github.com/VelocityRa/awesome-game-file-format-reversing/actions/runs/37159251430"
+        },
+        {
+          "name": "Building site from \"master\"",
+          "created_at": "2026-10-03T22:40:45Z",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "url": "https://github.com/VelocityRa/awesome-game-file-format-reversing/actions/runs/37159251393"
+        },
+        {
+          "name": "Running tests on \"refs/heads/master\" by \"VelocityRa\"",
+          "created_at": "2026-10-03T11:28:20Z",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "url": "https://github.com/VelocityRa/awesome-game-file-format-reversing/actions/runs/37119757242"
+        }
+      ]
+    },
+    {
+      "repo": "DiscoverBox/awesome-ai-reverse",
+      "total_count": 186,
+      "runs": [
+        {
+          "name": "Deploy GitHub Pages",
+          "created_at": "2026-10-09T09:03:32Z",
+          "event": "workflow_run",
+          "status": "completed",
+          "conclusion": "success",
+          "url": "https://github.com/DiscoverBox/awesome-ai-reverse/actions/runs/37908825334"
+        },
+        {
+          "name": "Update README repository metadata",
+          "created_at": "2026-10-09T09:03:02Z",
+          "event": "schedule",
+          "status": "completed",
+          "conclusion": "success",
+          "url": "https://github.com/DiscoverBox/awesome-ai-reverse/actions/runs/37908772516"
+        },
+        {
+          "name": "Deploy GitHub Pages",
+          "created_at": "2026-10-09T05:54:10Z",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "url": "https://github.com/DiscoverBox/awesome-ai-reverse/actions/runs/37890790495"
+        }
+      ]
+    },
+    {
+      "repo": "TheQmaks/awesome-web-reversing",
+      "total_count": 14,
+      "runs": [
+        {
+          "name": "Verify tool catalog",
+          "created_at": "2026-10-05T13:27:23Z",
+          "event": "schedule",
+          "status": "completed",
+          "conclusion": "success",
+          "url": "https://github.com/TheQmaks/awesome-web-reversing/actions/runs/37316925893"
+        },
+        {
+          "name": "Mirror catalog repos",
+          "created_at": "2026-10-01T10:42:52Z",
+          "event": "schedule",
+          "status": "completed",
+          "conclusion": "success",
+          "url": "https://github.com/TheQmaks/awesome-web-reversing/actions/runs/36850844066"
+        },
+        {
+          "name": "Verify tool catalog",
+          "created_at": "2026-09-28T12:46:11Z",
+          "event": "schedule",
+          "status": "completed",
+          "conclusion": "success",
+          "url": "https://github.com/TheQmaks/awesome-web-reversing/actions/runs/36423965510"
+        }
+      ]
+    }
+  ]
+}
