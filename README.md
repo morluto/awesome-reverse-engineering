@@ -125,6 +125,7 @@ Run samples only in isolated, disposable environments, and follow your organizat
 - [dnSpyEx](https://github.com/dnSpyEx/dnSpy) - .NET debugger and assembly editor maintained as a continuation of dnSpy.
 - [ILSpy](https://github.com/icsharpcode/ILSpy) - .NET assembly browser and decompiler with GUI and command-line interfaces.
 - [JADX](https://github.com/skylot/jadx) - Android DEX decompiler with code navigation and search in a graphical interface or CLI.
+- [MobSF](https://github.com/MobSF/Mobile-Security-Framework-MobSF) - Automated static and dynamic analysis of Android, iOS, and Windows mobile apps, with a web interface and REST API.
 - [OWASP MASTG](https://mas.owasp.org/MASTG/) - Mobile security testing guidance with Android and iOS reverse-engineering techniques.
 - [Recaf](https://github.com/Col-E/Recaf) - Java bytecode analysis and editing environment.
 
@@ -149,8 +150,11 @@ Run samples only in isolated, disposable environments, and follow your organizat
 
 ![A browser displaying a network packet trace](.github/section-art/web-protocols.png)
 
+- [Burp Suite](https://portswigger.net/burp) - Intercepting proxy and toolkit for inspecting, replaying, and modifying HTTP and WebSocket traffic. **Commercial**, with a free Community Edition.
 - [Chrome DevTools](https://developer.chrome.com/docs/devtools/) - Browser tools for stepping through JavaScript, inspecting network requests, and examining runtime state.
+- [HTTP Toolkit](https://httptoolkit.com/) - Intercepts and inspects HTTP(S) traffic from browsers, desktop applications, Android devices, and containers with automated interception setup. **Commercial**, with a free open-source edition.
 - [mitmproxy](https://github.com/mitmproxy/mitmproxy) - Intercepts, inspects, and modifies HTTP traffic with interactive tools and Python scripts.
+- [Protobuf Decoder](https://github.com/pawitp/protobuf-decoder) - Web application that decodes Protobuf messages without a schema and shows field numbers, wire types, and possible value interpretations.
 - [WABT](https://github.com/WebAssembly/wabt) - WebAssembly utilities for converting, inspecting, validating, and decompiling modules.
 - [webcrack](https://github.com/j4k0xb/webcrack) - Deobfuscates JavaScript and unpacks common bundler output to make code easier to inspect.
 - [Wireshark](https://www.wireshark.org/) - Captures and dissects network traffic for protocol investigation.
@@ -160,8 +164,12 @@ Run samples only in isolated, disposable environments, and follow your organizat
 ![A microcontroller board with cyan traces and an orange debug connector](.github/section-art/firmware-hardware.png)
 
 - [Binwalk](https://github.com/ReFirmLabs/binwalk) - Identifies embedded files and extracts content from firmware images.
+- [EMBA](https://github.com/e-m-b-a/emba) - Firmware security analyzer that extracts images, runs static and emulation-based checks, and produces reports and SBOMs.
+- [FirmAE](https://github.com/pr0v3rbs/FirmAE) - Emulates Linux-based router and IP camera firmware for dynamic analysis, using heuristics that make full-system emulation succeed more often.
+- [flashrom](https://www.flashrom.org/) - Reads, writes, and verifies flash chips through supported programmers, for dumping or restoring firmware from hardware.
 - [OFRAK](https://github.com/redballoonsecurity/ofrak) - Framework for unpacking, analyzing, modifying, and repacking binary artifacts.
 - [OpenOCD](https://openocd.org/) - Connects to hardware debug interfaces for on-chip debugging and flash access.
+- [QEMU](https://www.qemu.org/) - Machine emulator for running firmware and programs built for other architectures, with a GDB stub for debugging.
 - [sigrok](https://sigrok.org/) - Signal analysis tools and protocol decoders for logic analyzers and related hardware.
 - [UEFITool](https://github.com/LongSoft/UEFITool) - Parses UEFI firmware structures and extracts or replaces modules.
 - [unblob](https://github.com/onekey-sec/unblob) - Extracts nested archives, compressed data, and filesystem images from firmware and other files.
