@@ -39,6 +39,8 @@ Find a tool by the work you need to do. Each entry describes its purpose; commer
 
 ## Learning
 
+![An open technical manual with circuit diagrams and an orange bookmark](.github/section-art/learning.png)
+
 - [Azeria Labs](https://azeria-labs.com/writing-arm-assembly-part-1/) - ARM assembly tutorials with exercises for learning registers, memory, and calling conventions.
 - [OpenSecurityTraining2](https://ost2.fyi/) - Structured courses in assembly, architecture, debugging, and reverse engineering.
 - [Reverse Engineering for Beginners](https://beginners.re/) - Free book connecting compiled C and C++ examples to assembly across several architectures.
@@ -52,6 +54,8 @@ Find a tool by the work you need to do. Each entry describes its purpose; commer
 - [LIEF](https://github.com/lief-project/LIEF) - Parses and modifies executable formats such as PE, ELF, and Mach-O from code.
 
 ## Native analysis
+
+![A binary file inspected through a magnifying glass](.github/section-art/binary-analysis.png)
 
 - [Binary Ninja](https://binary.ninja/) - Interactive disassembler and decompiler with intermediate representations and scripting APIs. **Commercial**, with a free edition.
 - [Cutter](https://github.com/rizinorg/cutter) - Graphical reverse-engineering interface built on Rizin.
@@ -71,6 +75,8 @@ Find a tool by the work you need to do. Each entry describes its purpose; commer
 
 ## Android and managed code
 
+![A browser and phone exchanging packets](.github/section-art/apps-protocols.png)
+
 - [Androguard](https://github.com/androguard/androguard) - Python tooling for analyzing Android applications, bytecode, and call relationships.
 - [Apktool](https://github.com/iBotPeaches/Apktool) - Decodes Android resources and Smali code, and rebuilds APKs after edits.
 - [dnSpyEx](https://github.com/dnSpyEx/dnSpy) - .NET debugger and assembly editor maintained as a continuation of dnSpy.
@@ -88,6 +94,8 @@ Find a tool by the work you need to do. Each entry describes its purpose; commer
 - [Wireshark](https://www.wireshark.org/) - Captures and dissects network traffic for protocol investigation.
 
 ## Firmware and hardware
+
+![A microcontroller board with cyan traces and an orange debug connector](.github/section-art/firmware-hardware.png)
 
 - [Binwalk](https://github.com/ReFirmLabs/binwalk) - Identifies embedded files and extracts content from firmware images.
 - [OFRAK](https://github.com/redballoonsecurity/ofrak) - Framework for unpacking, analyzing, modifying, and repacking binary artifacts.
