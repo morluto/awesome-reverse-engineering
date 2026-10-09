@@ -1,5 +1,7 @@
 # Awesome Reverse Engineering [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
+> **Featured: [REA](https://github.com/morluto/rea)** — Agent-oriented reverse-engineering tools spanning application behavior and native binaries. Maintained by this list's owner.
+
 A curated starting point for understanding binaries, applications, firmware, file formats, and protocols.
 
 Find a tool by the work you need to do. Each entry describes its purpose; commercial tools are marked **commercial**. This is an initial selection, open to additions and corrections.
@@ -115,7 +117,6 @@ Agent integrations expose existing analysis tools or coordinate an investigation
 - [IDA Pro MCP](https://github.com/mrexodia/ida-pro-mcp) - Exposes IDA analysis and scripting capabilities to MCP clients; requires a compatible IDA installation.
 - [JADX-AI-MCP](https://github.com/zinja-coder/jadx-ai-mcp) - Connects AI clients to JADX for Android application analysis.
 - [radare2 MCP](https://github.com/radareorg/radare2-mcp) - Provides an MCP interface to radare2 for agent-driven binary analysis.
-- [REA](https://github.com/morluto/rea) - Agent-oriented reverse-engineering tools spanning application behavior and native binaries. Maintained by this list's owner.
 
 ## Practice and communities
 
