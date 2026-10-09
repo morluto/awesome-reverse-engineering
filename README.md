@@ -1,6 +1,6 @@
 # Awesome Reverse Engineering [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
-> **Featured: [REA](https://github.com/morluto/rea)** — Agent-oriented reverse-engineering tools spanning application behavior and native binaries. Maintained by this list's owner.
+> **Featured: [REA](https://github.com/morluto/rea)** — Agent-oriented reverse-engineering tools, from application behavior to native binaries. By the creators of awesome-reverse-engineering.
 
 A curated starting point for understanding binaries, applications, firmware, file formats, and protocols.
 
