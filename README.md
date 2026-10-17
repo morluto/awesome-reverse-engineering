@@ -210,6 +210,7 @@ Run samples only in isolated, disposable environments, and follow your organizat
 - [sigrok](https://sigrok.org/) - Signal analysis tools and protocol decoders for logic analyzers and related hardware.
 - [UEFITool](https://github.com/LongSoft/UEFITool) - Parses UEFI firmware structures and extracts or replaces modules.
 - [unblob](https://github.com/onekey-sec/unblob) - Extracts nested archives, compressed data, and filesystem images from firmware and other files.
+- [usb-rea](https://github.com/emirmrkaljevic/usb-rea) - Infers the protocol of a vendor-specific USB device from usbmon or USBPcap captures of labelled actions (value fields, counters, checksums, multi-packet commands), with frame-number evidence, and generates a pyusb driver and a Wireshark Lua dissector; tested on synthetic and documented protocols, not yet on many real devices.
 
 ## File formats
 
