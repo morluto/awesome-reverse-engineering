@@ -367,6 +367,7 @@ See the [list structure and maintenance review](docs/list-review.md) for a dated
 
 The [2026-10-25 catalog source review](docs/catalog-expansion-review.md) records the purpose, prerequisites, source snapshots, and evidence limits for the new specialized entries; documented resources are distinguished from executed examples.
 
+- [AI Rebuilds](https://ai-rebuilds.com/) - Directory of software and game reconstructions, ports, decompilations, and supporting tools, with method and reported AI-involvement labels and a weekly GitHub metadata-refresh workflow; provenance and compatibility claims require independent review.
 - [Awesome AI Reverse Engineering](https://github.com/DiscoverBox/awesome-ai-reverse) - AI integrations organized by analysis ecosystem, with English and Chinese editions.
 - [Awesome Cyber Security Heaven](https://github.com/RanaKhan77/awesome-cyber-security-heaven) - Broad cybersecurity directory with reverse-engineering and debugging tools such as Ghidra, radare2, and GDB alongside crackme practice links; individual resources have their own licenses and free-tier restrictions.
 - [Awesome Embedded Security](https://github.com/hexsecs/awesome-embedded-security) - Firmware and hardware tools, learning resources, and repository-health workflows.
