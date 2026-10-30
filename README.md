@@ -334,6 +334,7 @@ Agent integrations expose existing analysis tools or coordinate an investigation
 
 - [Binary Ninja MCP Server](https://docs.binary.ninja/guide/mcp.html) - Built-in Binary Ninja server that exposes functions, symbols, strings, disassembly, IL, and decompiled code to MCP clients; the headless variant requires a Commercial or Ultimate license.
 - [Chrome DevTools MCP](https://github.com/ChromeDevTools/chrome-devtools-mcp) - Official MCP server for inspecting Chrome network activity, runtime state, console output, and performance traces; requires Node.js LTS and Chrome.
+- [Dex Explore by Exmergo](https://github.com/exmergo/dex/tree/main/skills/explore) - Read-only database-exploration skill that profiles columns, infers candidate keys and row grain, and probes candidate joins; PII flags are heuristic, and execution requires uv and Python 3.11+.
 - [Gepetto](https://github.com/JusticeRage/Gepetto) - IDA plugin that asks language models to explain decompiled functions and rename their variables; requires IDA 7.6 or later and access to a supported model provider.
 - [Ghidra MCP Server](https://github.com/bethington/ghidra-mcp) - Connects AI clients to Ghidra analysis through MCP.
 - [GhidraMCP](https://github.com/LaurieWired/GhidraMCP) - Ghidra plugin and MCP server for decompiling, listing, and renaming functions and data; the original project from which Ghidra MCP Server was derived.
