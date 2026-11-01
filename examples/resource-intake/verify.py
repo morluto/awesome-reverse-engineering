@@ -463,9 +463,11 @@ def verify_z3():
         solver = z3.Solver()
         solver.add(check(x) == SERIAL_TARGET)
         found = []
-        while solver.check() == z3.sat:
+        while (result := solver.check()) == z3.sat:
             found.append(solver.model()[x].as_long())
             solver.add(x != found[-1])  # block this serial and ask for another
+        # Only unsat proves no serial is left; unknown would leave the list possibly incomplete.
+        assert result == z3.unsat, (result, solver.reason_unknown())
         return sorted(found)
 
     assert [x for x in range(1 << 16) if serial_check(x) == SERIAL_TARGET] == SERIALS
