@@ -178,7 +178,7 @@ Run samples only in isolated, disposable environments, and follow your organizat
 - [Androguard](https://github.com/androguard/androguard) - Python tooling for analyzing Android applications, bytecode, and call relationships.
 - [Apktool](https://github.com/iBotPeaches/Apktool) - Decodes Android resources and Smali code, and rebuilds APKs after edits.
 - [AsmResolver](https://github.com/Washi1337/AsmResolver) - Library for reading, modifying, and rebuilding native and managed PE files, including .NET metadata and application bundles.
-- [CFR](https://github.com/leibnitz27/cfr) - Java class and JAR decompiler for inspecting managed code; requires a Java runtime, and language-feature compatibility varies by input and release.
+- [CFR](https://github.com/leibnitz27/cfr) - Java class and JAR decompiler for inspecting managed code; requires a Java runtime, and the latest release (0.152, December 2021) omits `sealed`/`permits` from Java 17 class files unless run with `--sealed true`.
 - [dnSpyEx](https://github.com/dnSpyEx/dnSpy) - .NET debugger and assembly editor maintained as a continuation of dnSpy.
 - [ILSpy](https://github.com/icsharpcode/ILSpy) - .NET assembly browser and decompiler with GUI and command-line interfaces.
 - [JADX](https://github.com/skylot/jadx) - Android DEX decompiler with code navigation and search in a graphical interface or CLI.

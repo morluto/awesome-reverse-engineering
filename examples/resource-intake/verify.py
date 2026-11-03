@@ -1,4 +1,4 @@
-"""Reproduce ten narrow resource examples with independent expected outputs."""
+"""Reproduce eleven narrow resource examples with independent expected outputs."""
 import argparse
 import ctypes.util
 from datetime import datetime, timezone
@@ -25,6 +25,10 @@ from urllib.request import urlopen
 SOURCE = Path(__file__).resolve().parent
 JAR_URL = "https://github.com/Vineflower/vineflower/releases/download/1.12.0/vineflower-1.12.0.jar"
 JAR_SHA256 = "1dfcfe974395734fa467ce620661c7623d05ba83670de0529b1fbd63ff548b9d"
+CFR_URL = "https://github.com/leibnitz27/cfr/releases/download/0.152/cfr-0.152.jar"
+CFR_SHA256 = "f686e8f3ded377d7bc87d216a90e9e9512df4156e75b06c655a16648ae8765b2"
+# Shapes.java: text block, areas 3*2*2, -1 (r == 0), 3*3, 2*5, then label(0, 1, 5, -3, 6).
+SHAPES_OUTPUT = "shapes|  v1|12,-1,9,10,zero,one1,one5,neg,many,"
 GOLDEN = bytes.fromhex("534d4b310500017472616365")
 EXPECTED_BRANCHES = "-1:-1\n0:11\n1:22\n2:22\n9:-1"
 HERMESC = {
@@ -447,7 +451,39 @@ def verify_esptool(work):
     return sha256(app)
 
 
-def verify(work, jar):
+def verify_cfr(work, cfr_jar):
+    """Compile -> decompile -> rebuild Shapes.java with CFR, with and without --sealed true."""
+    if cfr_jar is None:
+        cfr_jar = work / "cfr-0.152.jar"
+        with urlopen(CFR_URL, timeout=60) as response:
+            cfr_jar.write_bytes(response.read())
+    assert sha256(cfr_jar) == CFR_SHA256, "CFR artifact digest mismatch"
+    original = work / "cfr-original"
+    original.mkdir()
+    run("javac", "--release", "17", "-d", str(original), str(SOURCE / "Shapes.java"), str(SOURCE / "SealedProbe.java"))
+    assert run("java", "-cp", str(original), "Shapes") == SHAPES_OUTPUT
+    assert run("java", "-cp", str(original), "SealedProbe") == "true:3"
+
+    sealed = {}
+    for name, flags in (("default", []), ("sealed", ["--sealed", "true"])):
+        decompiled, rebuilt = work / f"cfr-{name}-src", work / f"cfr-{name}-rebuilt"
+        decompiled.mkdir()
+        rebuilt.mkdir()
+        run("java", "-jar", str(cfr_jar), str(original / "Shapes.class"), "--outputdir", str(decompiled), *flags)
+        source = (decompiled / "Shapes.java").read_text()
+        run("javac", "--release", "17", "-d", str(rebuilt), str(decompiled / "Shapes.java"), str(SOURCE / "SealedProbe.java"))
+        assert run("java", "-cp", str(rebuilt), "Shapes") == SHAPES_OUTPUT
+        sealed[name] = run("java", "-cp", str(rebuilt), "SealedProbe")
+        if name == "default":
+            # For Java 17 class files CFR 0.152 treats sealed as experimental and leaves it off unless asked.
+            assert "permits" not in source and "Uses 'sealed' constructs - enablewith --sealed true" in source, source
+        else:
+            assert "sealed interface Shape" in source and "permits Circle, Square, Rect" in source, source
+    assert sealed == {"default": "false:0", "sealed": "true:3"}, sealed
+    return {"artifact": {"url": CFR_URL, "sha256": CFR_SHA256}, "output": SHAPES_OUTPUT, "rebuilt_is_sealed": sealed}
+
+
+def verify(work, jar, cfr_jar=None):
     for package, expected in required_packages().items():
         try:
             installed = version(package)
@@ -527,6 +563,7 @@ def verify(work, jar):
     for classes in (original, rebuilt):
         assert run("java", "-cp", str(classes), "BranchDemo") == "25"
         assert run("java", "-cp", str(classes), "Probe") == EXPECTED_BRANCHES
+    cfr_summary = verify_cfr(work, cfr_jar)
 
     duck_digest = verify_malduck(work)
     hbc_digests = verify_hermes_dec(work)
@@ -550,6 +587,7 @@ def verify(work, jar):
             {"name": "Scapy", "version": "2.8.0", "result": "passed", "scope": "Offline packet/PCAP round trip and independent IP/UDP checksums; no traffic sent"},
             {"name": "YARA-X", "version": "1.21.0", "result": "passed", "scope": "Python API positive/negative matching and strict-regex CompileError"},
             {"name": "Vineflower", "version": "1.12.0", "result": "passed", "scope": "Java 17 record/switch expression, rebuild, main output and five branch vectors"},
+            {"name": "CFR", "version": "0.152", "result": "passed", "scope": "Synthetic Java 17 sealed interface, records, instanceof patterns, switch yield and text block: rebuilt output matches; by default the rebuilt interface is no longer sealed, and --sealed true restores it"},
             {"name": "Malduck", "version": "4.4.1", "result": "passed", "scope": "Self-authored YARA-triggered extractor and RC4 config; wrong-key and no-marker samples yield no config"},
             {"name": "hermes-dec", "version": "0.1.8", "result": "passed", "scope": "HBC 98/99 at -g0/-g1: header, disassembly and pseudo-code landmarks; -g1 debug-info parsing raises TypeError; executing the pseudo-code prints 21, not 25"},
             {"name": "boofuzz", "version": "0.4.2", "result": "passed", "scope": "Localhost TRC1 protocol: default frame, 575 payload mutations with correct length/CRC, sent and replied frames match; replies unread by default, UTF-8 string mutations, and a stopped target ends the run without a failure"},
@@ -557,9 +595,10 @@ def verify(work, jar):
             keystone_result,
             {"name": "esptool", "version": "5.6.0", "result": "passed", "scope": "Offline image-info on a synthetic ESP32 image: header, segments, checksum and SHA-256; chip ID 9 is auto-detected as ESP32-S3; checksum/hash mismatches exit 0, a truncated segment exits 2, and --chip overrides the header chip ID without a warning while the checksum and hash stay valid"},
         ],
-        "inputs": [{"path": name, "sha256": sha256(SOURCE / name)} for name in ("BranchDemo.java", "Probe.java", "hbc_fixture.js", "malduck_modules/duckcfg/__init__.py", "malduck_modules/duckcfg/duckcfg.yar", "memprocfs_probe.py", "verify.py", "requirements.txt")],
+        "inputs": [{"path": name, "sha256": sha256(SOURCE / name)} for name in ("BranchDemo.java", "Probe.java", "Shapes.java", "SealedProbe.java", "hbc_fixture.js", "malduck_modules/duckcfg/__init__.py", "malduck_modules/duckcfg/duckcfg.yar", "memprocfs_probe.py", "verify.py", "requirements.txt")],
         "golden_hex": GOLDEN.hex(),
         "vineflower_artifact": {"url": JAR_URL, "sha256": JAR_SHA256},
+        "cfr": cfr_summary,
         "expected_main": "25", "expected_branches": EXPECTED_BRANCHES.splitlines(),
         "malduck": {"sample_sha256": duck_digest, "expected_config": DUCK_CONFIG},
         "hermes_dec": {"compilers": {str(v): {"url": u, "sha256": d} for v, (u, d) in HERMESC.items()},
@@ -578,11 +617,12 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path, required=True, help="Directory for results and generated example artifacts")
     parser.add_argument("--vineflower-jar", type=Path, help="Optional existing 1.12.0 JAR; its digest is still checked")
+    parser.add_argument("--cfr-jar", type=Path, help="Optional existing CFR 0.152 JAR; its digest is still checked")
     args = parser.parse_args()
     args.output.mkdir(parents=True, exist_ok=True)
     jar = args.vineflower_jar.resolve() if args.vineflower_jar else None
     work = Path(tempfile.mkdtemp(prefix="run-", dir=args.output))
-    report = verify(work, jar)
+    report = verify(work, jar, args.cfr_jar.resolve() if args.cfr_jar else None)
     (args.output / "results.json").write_text(json.dumps(report, indent=2) + "\n")
     print(json.dumps(report, indent=2))
 
