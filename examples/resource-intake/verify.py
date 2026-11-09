@@ -1,4 +1,4 @@
-"""Reproduce eleven narrow resource examples with independent expected outputs."""
+"""Reproduce twelve narrow resource examples with independent expected outputs."""
 import argparse
 import ctypes.util
 from datetime import datetime, timezone
@@ -65,6 +65,9 @@ ESP_DIGEST = "f8d0bbc1a5404fa6754dc071f077ffd0b7d12fdda1887b9d236ff9b53bfbc9cb"
 # The same image with bit 0 of the first DRAM data byte flipped.
 ESP_CORRUPT_CHECKSUM = 0xF2
 ESP_CORRUPT_DIGEST = "b1f33ee18559e6060ca9a6acd628f0ab432abd84afd68f55c42bda4a3cc74147"
+# Synthetic 16-bit serial check; every input is brute-forced in plain Python for the expected answer.
+SERIAL_TARGET = 0x002A
+SERIALS = [0x1BB9, 0x9CFF, 0xB62C]
 
 def sha256(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
@@ -311,7 +314,7 @@ def keystone_host():
 
 
 def required_packages():
-    packages = {"construct": "2.10.70", "scapy": "2.8.0", "yara-x": "1.21.0", "hermes-dec": "0.1.8", "malduck": "4.4.1", "boofuzz": "0.4.2", "esptool": "5.6.0"}
+    packages = {"construct": "2.10.70", "scapy": "2.8.0", "yara-x": "1.21.0", "hermes-dec": "0.1.8", "malduck": "4.4.1", "boofuzz": "0.4.2", "esptool": "5.6.0", "z3-solver": "5.3.1.0"}
     if memprocfs_host():
         packages.update(MEMPROCFS_PACKAGES)
     if keystone_host():
@@ -483,6 +486,50 @@ def verify_cfr(work, cfr_jar):
     return {"artifact": {"url": CFR_URL, "sha256": CFR_SHA256}, "output": SHAPES_OUTPUT, "rebuilt_is_sealed": sealed}
 
 
+def serial_check(x):
+    """What a decompiler shows for the check: unsigned 16-bit multiply, xor with a logical shift, plus a rotate."""
+    return ((((x * 0x9E37) & 0xFFFF) ^ (x >> 5)) + (((x << 3) | (x >> 13)) & 0xFFFF)) & 0xFFFF
+
+
+def verify_z3():
+    import z3
+
+    def solve_all(check):
+        x = z3.BitVec("x", 16)
+        solver = z3.Solver()
+        solver.add(check(x) == SERIAL_TARGET)
+        found = []
+        while (result := solver.check()) == z3.sat:
+            found.append(solver.model()[x].as_long())
+            solver.add(x != found[-1])  # block this serial and ask for another
+        # Only unsat proves no serial is left; unknown would leave the list possibly incomplete.
+        assert result == z3.unsat, (result, solver.reason_unknown())
+        return sorted(found)
+
+    assert [x for x in range(1 << 16) if serial_check(x) == SERIAL_TARGET] == SERIALS
+    serials = solve_all(lambda x: ((x * 0x9E37) ^ z3.LShR(x, 5)) + z3.RotateLeft(x, 3))
+    assert serials == SERIALS, [hex(v) for v in serials]
+
+    # Z3's >> is an arithmetic shift; translating C's unsigned >> with it loses the serials whose top bit is set.
+    naive = solve_all(lambda x: ((x * 0x9E37) ^ (x >> 5)) + z3.RotateLeft(x, 3))
+    assert naive == [0x1BB9], [hex(v) for v in naive]
+    x = z3.BitVec("x", 16)
+    differ = z3.Solver()
+    differ.add(z3.LShR(x, 5) != x >> 5, z3.Extract(15, 15, x) == 0)
+    assert differ.check() == z3.unsat  # the two shifts agree whenever the top bit is clear
+
+    # model_completion=True adds a default value for an unconstrained variable to the model itself.
+    y = z3.BitVec("y", 16)
+    solver = z3.Solver()
+    solver.add(x == 5)
+    assert solver.check() == z3.sat
+    model = solver.model()
+    assert model[y] is None and [d.name() for d in model.decls()] == ["x"]
+    assert model.eval(y, model_completion=True).as_long() == 0
+    assert model[y].as_long() == 0 and sorted(d.name() for d in model.decls()) == ["x", "y"]
+    return {"target": hex(SERIAL_TARGET), "serials": [hex(v) for v in serials], "arithmetic_shift_serials": [hex(v) for v in naive]}
+
+
 def verify(work, jar, cfr_jar=None):
     for package, expected in required_packages().items():
         try:
@@ -569,6 +616,7 @@ def verify(work, jar, cfr_jar=None):
     hbc_digests = verify_hermes_dec(work)
     boofuzz_summary = verify_boofuzz(work)
     esp_digest = verify_esptool(work)
+    z3_summary = verify_z3()
     keystone_result = {"name": "Keystone", "version": "0.9.2", "result": "skipped", "scope": "This check runs on Linux x86-64 only"}
     if keystone_host():
         verify_keystone()
@@ -594,6 +642,7 @@ def verify(work, jar, cfr_jar=None):
             memprocfs,
             keystone_result,
             {"name": "esptool", "version": "5.6.0", "result": "passed", "scope": "Offline image-info on a synthetic ESP32 image: header, segments, checksum and SHA-256; chip ID 9 is auto-detected as ESP32-S3; checksum/hash mismatches exit 0, a truncated segment exits 2, and --chip overrides the header chip ID without a warning while the checksum and hash stay valid"},
+            {"name": "Z3", "version": "5.3.1.0", "result": "passed", "scope": "Synthetic 16-bit serial check: blocking-clause enumeration finds exactly the three serials a brute-force search finds; an arithmetic >> in place of LShR finds only the one with the top bit clear; model_completion adds a default value to the model"},
         ],
         "inputs": [{"path": name, "sha256": sha256(SOURCE / name)} for name in ("BranchDemo.java", "Probe.java", "Shapes.java", "SealedProbe.java", "hbc_fixture.js", "malduck_modules/duckcfg/__init__.py", "malduck_modules/duckcfg/duckcfg.yar", "memprocfs_probe.py", "verify.py", "requirements.txt")],
         "golden_hex": GOLDEN.hex(),
@@ -608,6 +657,7 @@ def verify(work, jar, cfr_jar=None):
         "memprocfs": {"image_sha256": image_digest, "dtb": hex(PML4), "virtual_address": hex(FIXTURE_VA), "physical_address": hex(PAGE + 0x678)},
         "keystone": {"base": hex(ASM_BASE), "x64": {"source": X64_SOURCE, "bytes": X64_BYTES},
                      "arm64": {"source": A64_SOURCE, "bytes": A64_BYTES, "backward_branch_at_0x2000": A64_BACKWARD_BRANCH}},
+        "z3": z3_summary,
         "esptool": {"image_sha256": esp_digest, "entry": hex(ESP_ENTRY), "checksum": hex(ESP_CHECKSUM), "validation_hash": ESP_DIGEST,
                     "corrupt_checksum": hex(ESP_CORRUPT_CHECKSUM), "corrupt_validation_hash": ESP_CORRUPT_DIGEST},
     }

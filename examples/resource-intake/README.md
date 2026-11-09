@@ -1,6 +1,6 @@
 # Bounded resource examples
 
-These self-authored fixtures demonstrate Construct, Scapy, YARA-X, Vineflower, CFR, Malduck, hermes-dec, MemProcFS, boofuzz, Keystone, and esptool in CI, plus a local PyLingual check. They are small selection examples, not upstream test suites or evidence of full platform/version support.
+These self-authored fixtures demonstrate Construct, Scapy, YARA-X, Vineflower, CFR, Malduck, hermes-dec, MemProcFS, boofuzz, Keystone, esptool, and Z3 in CI, plus a local PyLingual check. They are small selection examples, not upstream test suites or evidence of full platform/version support.
 
 Use Python 3.11 with `venv`/`pip` support, JDK 17, Node.js, and an Internet connection for the pinned packages, JAR, and Hermes compilers. From the repository root:
 
@@ -43,6 +43,7 @@ $resourcePython = Join-Path $resourceExamplesDir "venv\Scripts\python.exe"
 | boofuzz 0.4.2 | A made-up TRC1 protocol (`TRC1`, kind, big-endian length, payload, big-endian CRC-32) described with `Size` and `Checksum` blocks; the default frame matches bytes built with `struct` and `zlib`, and a localhost server receives all 575 payload mutations with a correct length and CRC, replying to each | One-field-at-a-time fuzzing (`max_depth=1`) against a localhost server only; see the limits below |
 | Keystone 0.9.2 (with Capstone 5.0.9) | x86-64 `push rbp; mov rbp, rsp; mov eax, dword ptr [rbx + rcx*4 + 8]; xor eax, eax; pop rbp; ret` and ARM64 `mov x0, #1; add x1, x2, x3; ldr x0, [x1, #8]; b #0x1010; ret` at base `0x1000` assemble to bytes encoded by hand from the Intel SDM and Arm ARM (`554889e58b448b0831c05dc3`, `200080d24100038b200440f901000014c0035fd6`); Capstone disassembles them back to the same text, which reassembles to the same bytes; `b #0x1010` at `0x2000` becomes the backward branch `04fcff17` | Two short sequences on two ISAs, Linux x86-64 only; see the limits below |
 | esptool 5.6.0 | A 128-byte ESP32 application image built by hand from the [5.6.0 documented layout](https://raw.githubusercontent.com/espressif/esptool/e970488de2c8f1906ca9b08de681b3f9dc58b2d5/docs/en/advanced-topics/firmware-image-format.rst): entry `0x40080400`, a 16-byte DRAM segment at `0x3ffb0000` and a 32-byte IRAM segment at `0x40080400`, checksum `0xf3` (`0xEF` XOR the segment data) and an appended SHA-256 `f8d0bbc1…c9cb`; `image-info` reports the header, both segments at file offsets `0x18` and `0x30`, and a valid checksum and hash, with no device connected. A synthetic variant with chip ID 9 is detected as ESP32-S3 (header identification only); flipping one data bit gives checksum `0xf2` and hash `b1f33ee1…4147`, both reported as invalid | Offline `image-info` on one ESP32 application layout; no serial port, flashing, or bootloader images; see the limits below |
+| Z3 (z3-solver 5.3.1.0) | A synthetic 16-bit serial check written as a decompiler would show it (`((x * 0x9E37) ^ (x >> 5)) + rotl(x, 3)` with unsigned arithmetic) and target `0x002a`; brute-forcing all 65,536 inputs in plain Python finds exactly `0x1bb9`, `0x9cff`, and `0xb62c`, and Z3's bit-vector solver, asked again with each found serial blocked, returns the same three and then `unsat` | Python API, one 16-bit constraint; no SMT-LIB files, tactics, timeouts, or `unknown` results; see the limits below |
 
 The branch oracle for `Probe.java` is:
 
@@ -80,6 +81,11 @@ The CFR check also records two limits:
 
 - By default, CFR 0.152 omits `sealed` and `permits` when decompiling a Java 17 class file, leaving only a comment (`Uses 'sealed' constructs - enablewith --sealed true`). The rebuilt `Shape` interface then reports `false:0`: no longer sealed, so code outside the hierarchy could implement it. `--sealed true` restores `true:3`. Its [0.152 options](https://raw.githubusercontent.com/leibnitz27/cfr/68477be3ff7171ee17ddd1a26064b9b253f1604f/src/org/benf/cfr/reader/util/getopt/OptionsImpl.java) treat sealed classes as experimental for Java 16 and 17 class files and enable them by default only from Java 18.
 - `instanceof` patterns are decompiled as plain casts through one shared `Record` variable. The rebuilt code behaves the same, but the original pattern variables are lost.
+
+The Z3 check also records two limits, both described in the [5.3.1 Python API](https://raw.githubusercontent.com/Z3Prover/z3/ac9156f97cb44e56472e1c841f7a2beb1e976b24/src/api/python/z3/z3.py) but easy to miss when translating decompiled code:
+
+- `>>` on a bit-vector is an arithmetic (signed) shift; C's unsigned `>>` is `LShR`. Written with `>>`, the same check returns only `0x1bb9`, silently missing the two serials whose top bit is set, without an error. The two shifts agree whenever the top bit is clear.
+- `model.eval(y, model_completion=True)` gives an unconstrained variable the value 0 and adds it to the model, so afterwards `model[y]` is 0 and `model.decls()` lists `y` as if the solver had chosen it.
 
 Without `-dtb`, MemProcFS rejects a raw image that contains no identifiable operating system (`Unable to locate valid DTB`). The Linux `memprocfs` wheel does not include `leechcore.so`; the runner uses the one from `leechcorepyc` by starting the probe with `LD_LIBRARY_PATH` pointing at its directory.
 

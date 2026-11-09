@@ -1,10 +1,10 @@
 {
-  "checked_at": "2026-11-03T09:39:57.345608+00:00",
+  "checked_at": "2026-11-09T05:11:41.941025+00:00",
   "host": {
-    "platform": "Linux-6.18.44-fc-v230-x86_64-with-glibc2.39",
-    "python": "3.11.17",
-    "javac": "javac 21.0.12.1",
-    "node": "v22.22.0"
+    "platform": "Linux-6.1.0-54-cloud-amd64-x86_64-with-glibc2.36",
+    "python": "3.11.15",
+    "javac": "javac 17.0.21",
+    "node": "v20.20.2"
   },
   "results": [
     {
@@ -72,6 +72,12 @@
       "version": "5.6.0",
       "result": "passed",
       "scope": "Offline image-info on a synthetic ESP32 image: header, segments, checksum and SHA-256; chip ID 9 is auto-detected as ESP32-S3; checksum/hash mismatches exit 0, a truncated segment exits 2, and --chip overrides the header chip ID without a warning while the checksum and hash stay valid"
+    },
+    {
+      "name": "Z3",
+      "version": "5.3.1.0",
+      "result": "passed",
+      "scope": "Synthetic 16-bit serial check: blocking-clause enumeration finds exactly the three serials a brute-force search finds; an arithmetic >> in place of LShR finds only the one with the top bit clear; model_completion adds a default value to the model"
     }
   ],
   "inputs": [
@@ -109,11 +115,11 @@
     },
     {
       "path": "verify.py",
-      "sha256": "496f46de943f05827f97b5a7e3f890427be97d86391f1a8129d17ecc63b641b8"
+      "sha256": "17256dc1097a69370defd3d542203c4f1824a26669099ec8e4e29f43cf0b4f1a"
     },
     {
       "path": "requirements.txt",
-      "sha256": "e41b6fb3c1fba4ea571c1920c02082517a425e666d7d64a46776427660065198"
+      "sha256": "5728a49e5174963eb193e92d03c2259134bfbcbd7f87454b0db486120c7becab"
     }
   ],
   "golden_hex": "534d4b310500017472616365",
@@ -166,11 +172,11 @@
     "hbc_sha256": {
       "98": {
         "g0": "d1ceacc1f40097b798abf4eeaf8f2f0a663afa9ed8d8fdd5f2b2d99ee2e422a8",
-        "g1": "9ea2749d21a627d5a6ff5fc61a4ddd79486e79040525cc2537cc7af5663b4f0d"
+        "g1": "43afa6eb92edc690171b57fa404575e07a709e3aaec419fac50a3cb92817914a"
       },
       "99": {
         "g0": "f51e55203c85ab6fd016ab83862f81aa61cc2f441087c10ef712c2148bf7b57d",
-        "g1": "5bec92f01a71016d39313955ce2dd363d0e59b969b1abe70f0a803c69ff507af"
+        "g1": "e1264ff83d8824fdff43601f64162dcd27f1622c18bff277ef13b7be3977ddd0"
       }
     },
     "original_output": "even:negative:25",
@@ -198,6 +204,17 @@
       "bytes": "200080d24100038b200440f901000014c0035fd6",
       "backward_branch_at_0x2000": "04fcff17"
     }
+  },
+  "z3": {
+    "target": "0x2a",
+    "serials": [
+      "0x1bb9",
+      "0x9cff",
+      "0xb62c"
+    ],
+    "arithmetic_shift_serials": [
+      "0x1bb9"
+    ]
   },
   "esptool": {
     "image_sha256": "57c7723bbb04b780c42ca98e756f1706a1bf6bf874f6f748f4897475645a9079",
