@@ -314,7 +314,7 @@ Run samples only in isolated, disposable environments, and follow your organizat
 - [S2E](https://github.com/S2E/s2e) - Selective symbolic-execution platform for analyzing programs across OS boundaries; requires a supported Linux host, the S2E toolchain, and prepared guest images.
 - [Triton](https://github.com/JonathanSalwan/Triton) - Dynamic binary analysis library with symbolic execution, taint analysis, and AST representations of instruction semantics, usable from C++ or Python.
 - [Unicorn](https://github.com/unicorn-engine/unicorn) - CPU emulation library for executing and instrumenting machine code across architectures.
-- [Z3](https://github.com/Z3Prover/z3) - SMT solver with command-line and language APIs for expressing and solving analysis constraints; satisfiability results depend on the model and solver outcome, including possible unknown results.
+- [Z3](https://github.com/Z3Prover/z3) - SMT solver with command-line and language APIs for expressing and solving analysis constraints, such as recovering inputs that pass a decompiled check; in the Python API `>>` on bit-vectors is an arithmetic shift (C's unsigned `>>` is `LShR`), and a solver can return unknown.
 
 ## Instruction lifting and semantics
 

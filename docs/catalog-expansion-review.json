@@ -1095,15 +1095,16 @@
     {
       "name": "Z3",
       "url": "https://github.com/Z3Prover/z3",
-      "description": "SMT solver with command-line and language APIs for expressing and solving analysis constraints; satisfiability results depend on the model and solver outcome, including possible unknown results.",
+      "description": "SMT solver with command-line and language APIs for expressing and solving analysis constraints, such as recovering inputs that pass a decompiled check; in the Python API `>>` on bit-vectors is an arithmetic shift (C's unsigned `>>` is `LShR`), and a solver can return unknown.",
       "checked_at": "2026-10-25",
       "next_review": "2026-11-25",
       "evidence_type": "documented",
       "execution_verified": false,
       "task_and_output": "SMT solver with command-line and language APIs for expressing and solving analysis constraints",
-      "constraints": " satisfiability results depend on the model and solver outcome, including possible unknown results.",
+      "constraints": "Satisfiability results depend on the model and solver outcome, including possible unknown results; the Python bit-vector API (z3-solver 5.3.1.0) is exercised by the resource-intake examples.",
       "sources": [
-        "https://raw.githubusercontent.com/Z3Prover/z3/1d790df0867ec01e38e755c55f5d5b0904ae2f18/README.md"
+        "https://raw.githubusercontent.com/Z3Prover/z3/1d790df0867ec01e38e755c55f5d5b0904ae2f18/README.md",
+        "https://raw.githubusercontent.com/Z3Prover/z3/ac9156f97cb44e56472e1c841f7a2beb1e976b24/src/api/python/z3/z3.py"
       ],
       "source_commit": "1d790df0867ec01e38e755c55f5d5b0904ae2f18",
       "source_date": "2026-10-25T09:45:10Z",

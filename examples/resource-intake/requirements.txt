@@ -9,3 +9,4 @@ leechcorepyc==2.23.3; sys_platform == "linux" and platform_machine == "x86_64"
 keystone-engine==0.9.2; sys_platform == "linux" and platform_machine == "x86_64"
 capstone==5.0.9; sys_platform == "linux" and platform_machine == "x86_64"
 esptool==5.6.0
+z3-solver==5.3.1.0
