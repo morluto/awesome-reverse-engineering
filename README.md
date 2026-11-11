@@ -345,6 +345,7 @@ Agent integrations expose existing analysis tools or coordinate an investigation
 - [radare2 MCP](https://github.com/radareorg/radare2-mcp) - Provides an MCP interface to radare2 for agent-driven binary analysis.
 - [re-audit](https://github.com/TLSRUF/re-audit) - Statically audits ELF/PE/Mach-O binaries and Android APKs for missing exploit mitigations (NX, PIE/ASLR, RELRO, stack canary), hardcoded secrets, and risky exported components; runs as a CLI or MCP server with no network access and no execution of the target. Findings are heuristic candidates for manual review, not confirmed vulnerabilities. Requires Python 3.10+.
 - [RES](https://github.com/alextnetto/res) - Experimental agent skill for documenting a SaaS web app's screens, business rules, data model, API shapes, and design tokens through the browser, with sandbox and change-ledger guidance; requires a browser-driving agent and Node.js 22+.
+- [ReverseAI](https://github.com/dagoSte/reverseai) - Static-analysis CLI and MCP server for binaries, Android packages and JavaScript bundles, with byte-linked findings and separate labels for tool-derived interpretations; requires Python 3.12+, and optional Ghidra, JADX, LIEF, YARA-X and Babel workers currently use Docker ARM64 images.
 - [WinDbg MCP](https://learn.microsoft.com/en-us/windows-hardware/drivers/debuggercmds/set-up-windbg-mcp) - Official MCP server built into WinDbg 1.2610.1001.0 and later; supported clients are VS Code with GitHub Copilot and GitHub Copilot CLI, with one active MCP client per WinDbg session.
 
 ## Practice and communities
