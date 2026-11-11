@@ -1,6 +1,6 @@
 # Bounded resource examples
 
-These self-authored fixtures demonstrate Construct, Scapy, YARA-X, Vineflower, Malduck, hermes-dec, MemProcFS, boofuzz, Keystone, esptool, and Z3 in CI, plus a local PyLingual check. They are small selection examples, not upstream test suites or evidence of full platform/version support.
+These self-authored fixtures demonstrate Construct, Scapy, YARA-X, Vineflower, CFR, Malduck, hermes-dec, MemProcFS, boofuzz, Keystone, esptool, and Z3 in CI, plus a local PyLingual check. They are small selection examples, not upstream test suites or evidence of full platform/version support.
 
 Use Python 3.11 with `venv`/`pip` support, JDK 17, Node.js, and an Internet connection for the pinned packages, JAR, and Hermes compilers. From the repository root:
 
@@ -11,7 +11,7 @@ python3.11 -m venv "$resource_examples_dir/venv"
 "$resource_examples_dir/venv/bin/python" examples/resource-intake/verify.py --output "$resource_examples_dir/results"
 ```
 
-The runner downloads [Vineflower 1.12.0](https://github.com/Vineflower/vineflower/releases/tag/1.12.0) and two `hermes-compiler` npm tarballs, and checks each SHA-256 before executing anything from them. An existing JAR can be supplied with `--vineflower-jar /path/to/vineflower-1.12.0.jar`; the same digest check still applies. Failed assertions or commands fail the run; a successful run writes `results.json` and retains generated artifacts in a unique directory under the selected output path.
+The runner downloads [Vineflower 1.12.0](https://github.com/Vineflower/vineflower/releases/tag/1.12.0), [CFR 0.152](https://github.com/leibnitz27/cfr/releases/tag/0.152), and two `hermes-compiler` npm tarballs, and checks each SHA-256 before executing anything from them. An existing JAR can be supplied with `--vineflower-jar /path/to/vineflower-1.12.0.jar`; the same digest check still applies, and `--cfr-jar /path/to/cfr-0.152.jar` does the same for CFR. Failed assertions or commands fail the run; a successful run writes `results.json` and retains generated artifacts in a unique directory under the selected output path.
 
 The Hermes fixture additionally needs Node.js (CI uses Node.js 22). Its pinned compilers provide Linux x86-64, universal macOS, and Windows x86-64 binaries; native Windows/macOS execution is not part of this repository's verification.
 
@@ -36,6 +36,7 @@ $resourcePython = Join-Path $resourceExamplesDir "venv\Scripts\python.exe"
 | Scapy 2.8.0 | Known Ethernet/IP/UDP fields and `trace` payload; independent IP/UDP checksum checks; PCAP write/read | Offline packets only, no transmission or live capture |
 | YARA-X 1.21.0 | Self-authored rule matches the golden bytes and not `negative sample`; unescaped `{` in a regex produces `CompileError` | Python API and this documented regex difference, not all YARA rules/modules |
 | Vineflower 1.12.0 | Java 17 record and switch expression; compile → decompile → rebuild; main prints `25`, five branch vectors match explicit expected values | This fixture only, no obfuscation or other Java target versions |
+| CFR 0.152 | Synthetic [`Shapes.java`](Shapes.java) with a sealed interface over three records, `instanceof` patterns, a `switch` with `yield`, and a text block, compiled with `--release 17`; it prints `shapes\|  v1\|12,-1,9,10,zero,one1,one5,neg,many,`. Decompiled by the release JAR and rebuilt, it prints the same line, with and without `--sealed true`. [`SealedProbe.java`](SealedProbe.java) reports `true:3` (sealed, three permitted subclasses) for the original | One class file version (Java 17) and this fixture only; see the limits below |
 | Malduck 4.4.1 | A [self-authored extractor](malduck_modules/duckcfg/__init__.py) and [YARA rule](malduck_modules/duckcfg/duckcfg.yar); a sample with marker `DKCFG1`, an 8-byte key, and a config encrypted by an independent RC4 implementation yields two C2 URLs, campaign `trace-7`, and sleep `300`; wrong-key and no-marker samples yield no config | Extractor framework, procmem reads, and RC4 only; no real malware family |
 | hermes-dec 0.1.8 | [`hbc_fixture.js`](hbc_fixture.js) compiled by `hermes-compiler` 250829098.0.19 (HBC 98) and 260318099.0.4 (HBC 99) at `-g0` and `-g1`; header version, disassembly, and pseudo-code landmarks (function names, strings, `<Mod>`, constant `7`) | See the limits below |
 | MemProcFS 5.19.0 | A 16 MiB raw image with a self-built x64 page table; with `-dtb 0x10000` the [probe](memprocfs_probe.py) shows one `unknown_process`, reads `MPFS-PHYS-MARK-1` at physical `0x1000` and through `/memory.pmem`, and translates `0x140001678` to physical `0x345678` where it reads `MPFS-VIRT-MARK-2` | Physical-memory, page-table, and virtual-file-system API on Linux x86-64 only; no Windows OS analysis |
@@ -75,6 +76,11 @@ The esptool check also records two limits:
 
 - In 5.6.0, `image-info` reports checksum/hash mismatches as `invalid` but still exits 0, so a script must read those lines rather than the exit status. A file cut off inside a segment exits 2 (`End of file reading segment 0x3ffb0000, length 16 (actual length 8)`).
 - `--chip esp32s3` makes `image-info` parse an ESP32 image as ESP32-S3 without a warning: it still prints `Chip ID: 0 (ESP32)` and a valid checksum, but labels the segments with the ESP32-S3 memory map. Without `--chip`, the chip comes from the image header.
+
+The CFR check also records two limits:
+
+- By default, CFR 0.152 omits `sealed` and `permits` when decompiling a Java 17 class file, leaving only a comment (`Uses 'sealed' constructs - enablewith --sealed true`). The rebuilt `Shape` interface then reports `false:0`: no longer sealed, so code outside the hierarchy could implement it. `--sealed true` restores `true:3`. Its [0.152 options](https://raw.githubusercontent.com/leibnitz27/cfr/68477be3ff7171ee17ddd1a26064b9b253f1604f/src/org/benf/cfr/reader/util/getopt/OptionsImpl.java) treat sealed classes as experimental for Java 16 and 17 class files and enable them by default only from Java 18.
+- `instanceof` patterns are decompiled as plain casts through one shared `Record` variable. The rebuilt code behaves the same, but the original pattern variables are lost.
 
 The Z3 check also records two limits, both described in the [5.3.1 Python API](https://raw.githubusercontent.com/Z3Prover/z3/ac9156f97cb44e56472e1c841f7a2beb1e976b24/src/api/python/z3/z3.py) but easy to miss when translating decompiled code:
 

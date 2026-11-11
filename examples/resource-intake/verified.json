@@ -1,10 +1,10 @@
 {
-  "checked_at": "2026-11-01T07:45:49.473287+00:00",
+  "checked_at": "2026-11-09T05:11:41.941025+00:00",
   "host": {
-    "platform": "Linux-6.18.44-fc-v185-x86_64-with-glibc2.39",
-    "python": "3.11.17",
-    "javac": "javac 21.0.12.1",
-    "node": "v22.22.0"
+    "platform": "Linux-6.1.0-54-cloud-amd64-x86_64-with-glibc2.36",
+    "python": "3.11.15",
+    "javac": "javac 17.0.21",
+    "node": "v20.20.2"
   },
   "results": [
     {
@@ -30,6 +30,12 @@
       "version": "1.12.0",
       "result": "passed",
       "scope": "Java 17 record/switch expression, rebuild, main output and five branch vectors"
+    },
+    {
+      "name": "CFR",
+      "version": "0.152",
+      "result": "passed",
+      "scope": "Synthetic Java 17 sealed interface, records, instanceof patterns, switch yield and text block: rebuilt output matches; by default the rebuilt interface is no longer sealed, and --sealed true restores it"
     },
     {
       "name": "Malduck",
@@ -84,6 +90,14 @@
       "sha256": "efecf11dc98b876125987476835805989b2fa2f6b52b722b695d7711169fe67a"
     },
     {
+      "path": "Shapes.java",
+      "sha256": "28ec7e059e50ae09d12f1073137f7c0da3b63d44dbd262615dbc2f5e3df6225d"
+    },
+    {
+      "path": "SealedProbe.java",
+      "sha256": "a0f050fcc8188ca16912a42ca129676a623590cb1538dd8f795cfadf79f61578"
+    },
+    {
       "path": "hbc_fixture.js",
       "sha256": "6d05b997536ea5fd52722a966f8a0575959eb2723d6a829c184f1f8464a2f6ad"
     },
@@ -101,7 +115,7 @@
     },
     {
       "path": "verify.py",
-      "sha256": "4284faf014cc362fa8854b851f37ba72e79bc4253d0dd2b7328f6a4c2b95226c"
+      "sha256": "17256dc1097a69370defd3d542203c4f1824a26669099ec8e4e29f43cf0b4f1a"
     },
     {
       "path": "requirements.txt",
@@ -112,6 +126,17 @@
   "vineflower_artifact": {
     "url": "https://github.com/Vineflower/vineflower/releases/download/1.12.0/vineflower-1.12.0.jar",
     "sha256": "1dfcfe974395734fa467ce620661c7623d05ba83670de0529b1fbd63ff548b9d"
+  },
+  "cfr": {
+    "artifact": {
+      "url": "https://github.com/leibnitz27/cfr/releases/download/0.152/cfr-0.152.jar",
+      "sha256": "f686e8f3ded377d7bc87d216a90e9e9512df4156e75b06c655a16648ae8765b2"
+    },
+    "output": "shapes|  v1|12,-1,9,10,zero,one1,one5,neg,many,",
+    "rebuilt_is_sealed": {
+      "default": "false:0",
+      "sealed": "true:3"
+    }
   },
   "expected_main": "25",
   "expected_branches": [
@@ -147,11 +172,11 @@
     "hbc_sha256": {
       "98": {
         "g0": "d1ceacc1f40097b798abf4eeaf8f2f0a663afa9ed8d8fdd5f2b2d99ee2e422a8",
-        "g1": "9ea2749d21a627d5a6ff5fc61a4ddd79486e79040525cc2537cc7af5663b4f0d"
+        "g1": "43afa6eb92edc690171b57fa404575e07a709e3aaec419fac50a3cb92817914a"
       },
       "99": {
         "g0": "f51e55203c85ab6fd016ab83862f81aa61cc2f441087c10ef712c2148bf7b57d",
-        "g1": "5bec92f01a71016d39313955ce2dd363d0e59b969b1abe70f0a803c69ff507af"
+        "g1": "e1264ff83d8824fdff43601f64162dcd27f1622c18bff277ef13b7be3977ddd0"
       }
     },
     "original_output": "even:negative:25",
