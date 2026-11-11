@@ -325,6 +325,7 @@ Run samples only in isolated, disposable environments, and follow your organizat
 - [Capstone](https://github.com/capstone-engine/capstone) - Multi-architecture disassembly library for building analysis tools.
 - [Keystone](https://github.com/keystone-engine/keystone) - Multi-architecture assembler library, the counterpart to Capstone, for turning assembly text into machine code when patching binaries or building test inputs; GPL-2.0 with a separate commercial license, and the latest PyPI release (0.9.2, 2020) ships wheels only for x86 and x86-64 hosts.
 - [Remill](https://github.com/lifting-bits/remill) - Library for lifting supported machine instructions into LLVM bitcode; requires compatible LLVM and build dependencies, with Windows support documented as experimental.
+- [Rewynth](https://github.com/nazeeh111/Rewynth) - Experimental ARM64 function recovery for finding return or declared-state mismatches after an edit; requires Python 3.11+ on Linux or macOS and covers only its supported instruction model.
 - [Zydis](https://github.com/zyantific/zydis) - x86/x86-64 instruction decoding and encoding library for building analysis tools; source builds use CMake or the documented Visual Studio project.
 
 ## AI-assisted analysis
