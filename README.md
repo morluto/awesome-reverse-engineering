@@ -107,6 +107,7 @@ Find a tool by the work you need to do. Each entry describes its purpose; commer
 - [radare2](https://github.com/radareorg/radare2) - Command-line toolkit for disassembly, binary inspection, debugging, and scripting.
 - [REDasm](https://github.com/redasm-dev/redasm) - Native disassembler and analysis GUI with legacy-format support; Windows and Linux are the primary tested hosts, while other platform builds have lower support tiers.
 - [RetDec](https://github.com/avast/retdec) - Retargetable LLVM-based decompiler for ELF, PE, Mach-O, and other formats; in limited maintenance mode, with little new development.
+- [RESX](https://github.com/Ryftenius/RESX) - Rust-powered Windows reverse-engineering framework that statically deobfuscates hashed and dynamically resolved APIs, reconstructs WinAPI arguments without PDBs, and reverse-engineers kernel driver IOCTL protocols, dispatch routines, buffer validation, and control flow.
 - [rev.ng](https://github.com/revng/revng) - LLVM- and QEMU-based binary-analysis framework and decompiler for inspecting and transforming native code; source builds need its documented toolchain.
 - [Rizin](https://github.com/rizinorg/rizin) - Reverse-engineering framework with command-line analysis and reusable libraries.
 - [Rubber Room](https://binarybacktrace.com/tools/rubber_room) - Browser PE workbench with x86-64 disassembly, partial Win32 API emulation and experimental C-like pseudocode that may omit program logic; alpha.
