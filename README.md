@@ -324,6 +324,7 @@ Run samples only in isolated, disposable environments, and follow your organizat
 
 <!-- TODO: section art for this heading. Add .github/section-art/lifting.png (320x213, 8-bit palette PNG in the style of the existing illustrations) and reference it here with alt text. -->
 
+- [arm64-recompiler](https://github.com/Sahilg93/arm64-recompiler) - Static recompiler that lifts Windows x86-64 PE binaries to LLVM IR and builds native macOS ARM64 executables; experimental, proven on a small corpus (Plink, jq, and the PuTTY GUI in a Wine-hosted mode), and requires Apple Silicon.
 - [BAP](https://github.com/BinaryAnalysisPlatform/bap) - Binary-analysis platform for lifting native code into an intermediate language and running analyses; source installation uses OCaml/opam and a compatible LLVM toolchain.
 - [Capstone](https://github.com/capstone-engine/capstone) - Multi-architecture disassembly library for building analysis tools.
 - [Keystone](https://github.com/keystone-engine/keystone) - Multi-architecture assembler library, the counterpart to Capstone, for turning assembly text into machine code when patching binaries or building test inputs; GPL-2.0 with a separate commercial license, and the latest PyPI release (0.9.2, 2020) ships wheels only for x86 and x86-64 hosts.
