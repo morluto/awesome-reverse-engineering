@@ -274,6 +274,7 @@ Run samples only in isolated, disposable environments, and follow your organizat
 - [Hex Viewer for VS Code](https://github.com/theluckystrike/hex-viewer-vscode) - VS Code 1.90+ binary viewer and editor with paged local-file reads, wildcard byte search, a data inspector and C/Python copy formats; remote files default to a 256 MiB cap, editing is overwrite-only, and structure templates are unavailable.
 - [ImHex](https://github.com/WerWolv/ImHex) - Hex editor with a pattern language for describing and exploring binary structures.
 - [Kaitai Struct](https://kaitai.io/) - Describes binary formats declaratively and generates parsers in multiple languages.
+- [Resource Cracker](https://www.pelock.com/products/resource-cracker) - Free Windows resource viewer and editor for PE32/PE32+, NE16, MUI and RC/RES files, with visual editors and batch commands; requires .NET Framework 4.8, and editing .NET modules is limited to Win32 resources.
 - [Struct Smith](https://binarybacktrace.com/tools/struct_smith) - Browser editor for Spec binary-format schemas, with a live parse tree, byte highlighting and diagnostics; alpha, with a 64 MiB input limit.
 
 ## Game reverse engineering
