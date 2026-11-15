@@ -106,7 +106,7 @@ Find a tool by the work you need to do. Each entry describes its purpose; commer
 - [IDA](https://hex-rays.com/ida-pro) - Interactive disassembler and decompiler with processor modules and a plugin ecosystem. **Commercial**, with a free edition.
 - [radare2](https://github.com/radareorg/radare2) - Command-line toolkit for disassembly, binary inspection, debugging, and scripting.
 - [REDasm](https://github.com/redasm-dev/redasm) - Native disassembler and analysis GUI with legacy-format support; Windows and Linux are the primary tested hosts, while other platform builds have lower support tiers.
-- [RESX](https://github.com/Ryftenius/RESX) - Rust-powered Windows reverse-engineering framework that statically deobfuscates hashed and dynamically resolved APIs, reconstructs WinAPI arguments without PDBs, and reverse-engineers kernel driver IOCTL protocols, dispatch routines, buffer validation, and control flow.
+- [RESX](https://github.com/Ryftenius/RESX) - Windows-focused Rust toolkit for PE call graphs, selected hashed or dynamically resolved APIs, and bounded driver IOCTL analysis; SDK headers supply WinAPI argument names, and inferred behavior requires manual validation.
 - [RetDec](https://github.com/avast/retdec) - Retargetable LLVM-based decompiler for ELF, PE, Mach-O, and other formats; in limited maintenance mode, with little new development.
 - [rev.ng](https://github.com/revng/revng) - LLVM- and QEMU-based binary-analysis framework and decompiler for inspecting and transforming native code; source builds need its documented toolchain.
 - [Rizin](https://github.com/rizinorg/rizin) - Reverse-engineering framework with command-line analysis and reusable libraries.
