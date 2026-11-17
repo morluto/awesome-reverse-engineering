@@ -234,6 +234,7 @@ Run samples only in isolated, disposable environments, and follow your organizat
 - [wasm-tools](https://github.com/bytecodealliance/wasm-tools) - Bytecode Alliance tools for inspecting, validating, and transforming WebAssembly modules, components, and WIT interfaces.
 - [webcrack](https://github.com/j4k0xb/webcrack) - Deobfuscates JavaScript and unpacks common bundler output to make code easier to inspect.
 - [Wireshark](https://www.wireshark.org/) - Captures and dissects network traffic for protocol investigation.
+- [friTap](https://github.com/fkie-cad/friTap) - Extracts encryption keys (mainly TLS) and captures plaintext from running applications using Frida, enabling traffic analysis without a TLS interception proxy.
 
 ## Firmware and hardware
 
