@@ -225,6 +225,7 @@ Run samples only in isolated, disposable environments, and follow your organizat
 - [boofuzz](https://github.com/jtpereyda/boofuzz) - Python framework for describing a protocol's message fields and sending mutated messages to a target, useful for testing a reconstructed protocol against a live service; crash detection needs a process monitor or restart callback.
 - [Burp Suite](https://portswigger.net/burp) - Intercepting proxy and toolkit for inspecting, replaying, and modifying HTTP and WebSocket traffic. **Commercial**, with a free Community Edition.
 - [Chrome DevTools](https://developer.chrome.com/docs/devtools/) - Browser tools for stepping through JavaScript, inspecting network requests, and examining runtime state.
+- [friTap](https://github.com/fkie-cad/friTap) - Extracts encryption keys (mainly TLS) and captures plaintext from running applications using Frida, enabling traffic analysis without a TLS interception proxy.
 - [HTTP Toolkit](https://httptoolkit.com/) - Intercepts and inspects HTTP(S) traffic from browsers, desktop applications, Android devices, and containers with automated interception setup. **Commercial**, with a free open-source edition.
 - [mitmproxy](https://github.com/mitmproxy/mitmproxy) - Intercepts, inspects, and modifies HTTP traffic with interactive tools and Python scripts.
 - [Netzob](https://github.com/netzob/netzob) - Python protocol-inference library for exploring fields, messages, and state models from captures; installation needs native dependencies and the documented Python environment.
@@ -234,7 +235,6 @@ Run samples only in isolated, disposable environments, and follow your organizat
 - [wasm-tools](https://github.com/bytecodealliance/wasm-tools) - Bytecode Alliance tools for inspecting, validating, and transforming WebAssembly modules, components, and WIT interfaces.
 - [webcrack](https://github.com/j4k0xb/webcrack) - Deobfuscates JavaScript and unpacks common bundler output to make code easier to inspect.
 - [Wireshark](https://www.wireshark.org/) - Captures and dissects network traffic for protocol investigation.
-- [friTap](https://github.com/fkie-cad/friTap) - Extracts encryption keys (mainly TLS) and captures plaintext from running applications using Frida, enabling traffic analysis without a TLS interception proxy.
 
 ## Firmware and hardware
 
