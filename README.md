@@ -337,6 +337,7 @@ Run samples only in isolated, disposable environments, and follow your organizat
 
 Agent integrations expose existing analysis tools or coordinate an investigation. Check the upstream documentation for required software and supported clients; confirm conclusions against the underlying code and runtime evidence.
 
+- [AREA](https://github.com/planners1490/area) - Offline agent skill and Python CLI that audits Mach-O, ELF, and PE binaries for symbol/toolchain leaks, ARM64/x86_64 LLVM constant-folding or stack-spill regressions, MBA density, signing/hardware-binding portability, differential equivalence, and README-vs-binary claim drift; heuristic disassembly checks require manual confirmation and Python 3.9+ plus optional host tools (`objdump`/`llvm-objdump`, `nm`/`readelf`, `codesign`).
 - [Binary Ninja MCP Server](https://docs.binary.ninja/guide/mcp.html) - Built-in Binary Ninja server that exposes functions, symbols, strings, disassembly, IL, and decompiled code to MCP clients; the headless variant requires a Commercial or Ultimate license.
 - [Chrome DevTools MCP](https://github.com/ChromeDevTools/chrome-devtools-mcp) - Official MCP server for inspecting Chrome network activity, runtime state, console output, and performance traces; requires Node.js LTS and Chrome.
 - [Dex Explore by Exmergo](https://github.com/exmergo/dex/tree/main/skills/explore) - Read-only database-exploration skill that profiles columns, infers candidate keys and row grain, and probes candidate joins; PII flags are heuristic, and execution requires uv and Python 3.11+.
