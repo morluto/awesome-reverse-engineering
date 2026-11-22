@@ -111,6 +111,7 @@ Find a tool by the work you need to do. Each entry describes its purpose; commer
 - [rev.ng](https://github.com/revng/revng) - LLVM- and QEMU-based binary-analysis framework and decompiler for inspecting and transforming native code; source builds need its documented toolchain.
 - [Rizin](https://github.com/rizinorg/rizin) - Reverse-engineering framework with command-line analysis and reusable libraries.
 - [Rubber Room](https://binarybacktrace.com/tools/rubber_room) - Browser PE workbench with x86-64 disassembly, partial Win32 API emulation and experimental C-like pseudocode that may omit program logic; alpha.
+- [Windissect](https://github.com/razecrs/windissect) - Turns a Windows PE and its matching PDB into build-pinned C, C++ and Rust interfaces for undocumented classes, vtables and functions, keeping unproven results as candidates and diffing each Windows build against the last; full recovery needs the PDB (fetched automatically for Microsoft binaries), and runtime probing is Windows-only.
 
 ## Debuggers
 
