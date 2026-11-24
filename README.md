@@ -216,7 +216,7 @@ Run samples only in isolated, disposable environments, and follow your organizat
 - [r2flutter](https://github.com/radareorg/r2flutter) - radare2 plugin and CLI for recovering Dart AOT snapshot metadata from Flutter binaries; requires radare2 6.2.2+, primarily targets AArch64, and depends on snapshot layout.
 - [Redress](https://github.com/goretk/redress) - Recovers compiler metadata, packages, types, and symbols from stripped Go executables; target Go-version compatibility depends on the selected release and GoRE parser.
 - [reFlutter](https://github.com/Impact-I/reFlutter) - Flutter mobile-analysis framework that instruments matching engine builds and produces method or type information; Android/iOS architecture and engine-version support varies.
-- [WhatsABI](https://github.com/shazow/whatsabi) - TypeScript library for inferring Ethereum ABI entries and resolving proxy metadata from bytecode; inferred signatures and types are not original-source recovery.
+- [WhatsABI](https://github.com/shazow/whatsabi) - TypeScript library for inferring Ethereum ABI entries and resolving proxy metadata from bytecode; selector recovery follows the JUMPI table, and inferred signatures and types are not original-source recovery.
 
 ## Web and protocols
 
