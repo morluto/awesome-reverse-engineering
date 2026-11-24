@@ -1,4 +1,4 @@
-"""Reproduce twelve narrow resource examples with independent expected outputs."""
+"""Reproduce thirteen narrow resource examples with independent expected outputs."""
 import argparse
 import ctypes.util
 from datetime import datetime, timezone
@@ -314,7 +314,7 @@ def keystone_host():
 
 
 def required_packages():
-    packages = {"construct": "2.10.70", "scapy": "2.8.0", "yara-x": "1.21.0", "hermes-dec": "0.1.8", "malduck": "4.4.1", "boofuzz": "0.4.2", "esptool": "5.6.0", "z3-solver": "5.3.1.0"}
+    packages = {"construct": "2.10.70", "scapy": "2.8.0", "yara-x": "1.21.0", "hermes-dec": "0.1.8", "malduck": "4.4.1", "boofuzz": "0.4.2", "esptool": "5.6.0", "z3-solver": "5.3.1.0", "oletools": "0.60.2"}
     if memprocfs_host():
         packages.update(MEMPROCFS_PACKAGES)
     if keystone_host():
@@ -530,6 +530,54 @@ def verify_z3():
     return {"target": hex(SERIAL_TARGET), "serials": [hex(v) for v in serials], "arithmetic_shift_serials": [hex(v) for v in naive]}
 
 
+def verify_oletools():
+    import oletools.rtfobj
+
+    payload = b"OLE-RTF-PROBE-PAYLOAD-1"
+    filename, src_path, tmp_path = b"probe.txt", b"C:\\work\\probe.txt", b"C:\\temp\\probe.txt"
+    pkg = (
+        struct.pack("<H", 2) + filename + b"\x00" + src_path + b"\x00"
+        + struct.pack("<HH", 0, 3)
+        + struct.pack("<I", len(tmp_path) + 1) + tmp_path + b"\x00"
+        + struct.pack("<I", len(payload)) + payload
+    )
+    cls = b"Package\x00"
+    ole1 = struct.pack("<III", 0x00000501, 2, len(cls)) + cls + struct.pack("<III", 0, 0, len(pkg)) + pkg
+    hex_bytes = ole1.hex().encode()
+
+    rtf = b"{\\rtf1\\ansi{\\object\\objemb{\\*\\objclass Package}{\\*\\objdata " + hex_bytes + b"}}}"
+    parser = oletools.rtfobj.RtfObjParser(rtf)
+    parser.parse()
+    assert len(parser.objects) == 1
+    obj = parser.objects[0]
+    assert obj.is_ole and obj.is_package and obj.class_name == b"Package"
+    assert obj.filename == "probe.txt" and obj.olepkgdata == payload
+
+    # Whitespace/newlines and dummy {\bin0} groups inside \objdata still decode to the same Package payload.
+    obf_rtf = b"{\\rtf1\\ansi{\\object\\objemb{\\*\\objdata " + hex_bytes[:16] + b"\r\n {\\bin0}" + hex_bytes[16:] + b"}}}"
+    obf = oletools.rtfobj.RtfObjParser(obf_rtf)
+    obf.parse()
+    assert len(obf.objects) == 1 and obf.objects[0].is_package and obf.objects[0].olepkgdata == payload
+
+    # Plain RTF without \object yields zero extracted objects.
+    plain = oletools.rtfobj.RtfObjParser(b"{\\rtf1\\ansi plain text}")
+    plain.parse()
+    assert len(plain.objects) == 0
+
+    # Non-OLE1 bytes inside \objdata are still returned as an object with is_ole=False and is_package=False.
+    raw_rtf = b"{\\rtf1\\ansi{\\object\\objemb{\\*\\objdata " + b"NOT_OLE1_DATA".hex().encode() + b"}}}"
+    raw = oletools.rtfobj.RtfObjParser(raw_rtf)
+    raw.parse()
+    assert len(raw.objects) == 1 and not raw.objects[0].is_ole and not raw.objects[0].is_package
+    assert raw.objects[0].olepkgdata is None and raw.objects[0].rawdata == b"NOT_OLE1_DATA"
+
+    return {
+        "rtf_sha256": hashlib.sha256(rtf).hexdigest(),
+        "payload_sha256": hashlib.sha256(payload).hexdigest(),
+        "filename": obj.filename,
+    }
+
+
 def verify(work, jar, cfr_jar=None):
     for package, expected in required_packages().items():
         try:
@@ -617,6 +665,7 @@ def verify(work, jar, cfr_jar=None):
     boofuzz_summary = verify_boofuzz(work)
     esp_digest = verify_esptool(work)
     z3_summary = verify_z3()
+    oletools_summary = verify_oletools()
     keystone_result = {"name": "Keystone", "version": "0.9.2", "result": "skipped", "scope": "This check runs on Linux x86-64 only"}
     if keystone_host():
         verify_keystone()
@@ -643,6 +692,7 @@ def verify(work, jar, cfr_jar=None):
             keystone_result,
             {"name": "esptool", "version": "5.6.0", "result": "passed", "scope": "Offline image-info on a synthetic ESP32 image: header, segments, checksum and SHA-256; chip ID 9 is auto-detected as ESP32-S3; checksum/hash mismatches exit 0, a truncated segment exits 2, and --chip overrides the header chip ID without a warning while the checksum and hash stay valid"},
             {"name": "Z3", "version": "5.3.1.0", "result": "passed", "scope": "Synthetic 16-bit serial check: blocking-clause enumeration finds exactly the three serials a brute-force search finds; an arithmetic >> in place of LShR finds only the one with the top bit clear; model_completion adds a default value to the model"},
+            {"name": "oletools", "version": "0.60.2", "result": "passed", "scope": "Synthetic RTF with an embedded OLE1 Package: RtfObjParser recovers filename and payload across clean and obfuscated (whitespace + \\bin0) hex; plain RTF yields 0 objects; non-OLE1 \\objdata still yields an object with is_ole=False and is_package=False"},
         ],
         "inputs": [{"path": name, "sha256": sha256(SOURCE / name)} for name in ("BranchDemo.java", "Probe.java", "Shapes.java", "SealedProbe.java", "hbc_fixture.js", "malduck_modules/duckcfg/__init__.py", "malduck_modules/duckcfg/duckcfg.yar", "memprocfs_probe.py", "verify.py", "requirements.txt")],
         "golden_hex": GOLDEN.hex(),
@@ -658,6 +708,7 @@ def verify(work, jar, cfr_jar=None):
         "keystone": {"base": hex(ASM_BASE), "x64": {"source": X64_SOURCE, "bytes": X64_BYTES},
                      "arm64": {"source": A64_SOURCE, "bytes": A64_BYTES, "backward_branch_at_0x2000": A64_BACKWARD_BRANCH}},
         "z3": z3_summary,
+        "oletools": oletools_summary,
         "esptool": {"image_sha256": esp_digest, "entry": hex(ESP_ENTRY), "checksum": hex(ESP_CHECKSUM), "validation_hash": ESP_DIGEST,
                     "corrupt_checksum": hex(ESP_CORRUPT_CHECKSUM), "corrupt_validation_hash": ESP_CORRUPT_DIGEST},
     }
