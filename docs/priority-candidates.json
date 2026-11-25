@@ -208,13 +208,13 @@
       "section": "Malware analysis",
       "description": "Python tools for inspecting Office, OLE, and RTF files and extracting macros, embedded objects, and other document artifacts.",
       "research_priority": "A0",
-      "checked_at": "2026-10-13",
-      "next_review": "2026-11-13",
-      "evidence_type": "documented",
+      "checked_at": "2026-11-24",
+      "next_review": "2026-12-24",
+      "evidence_type": "reproduced",
       "task": "Office, OLE, and RTF analysis",
       "incremental_value": "Fills the document-input gap: macro extraction, embedded objects, and related document artifacts rather than predominantly PE inputs.",
       "constraints": "Coverage varies by subtool; XLM workflows have optional dependencies. README news mentions 0.60.3 while the latest GitHub release endpoint returns 0.60.2. Own code uses BSD-style terms, with MIT/third-party exceptions.",
-      "next_check": "Pin the actual distribution version and verify extraction from a self-authored document.",
+      "next_check": "VBA, XLM, and Office Open XML extraction remain unchecked.",
       "sources": [
         "https://raw.githubusercontent.com/decalage2/oletools/ec10260989dbc48b9109e3d05d22beee19cf2333/README.md",
         "https://raw.githubusercontent.com/decalage2/oletools/ec10260989dbc48b9109e3d05d22beee19cf2333/LICENSE.md"
@@ -233,7 +233,9 @@
       "source_browser_urls": [
         "https://github.com/decalage2/oletools/blob/ec10260989dbc48b9109e3d05d22beee19cf2333/README.md",
         "https://github.com/decalage2/oletools/blob/ec10260989dbc48b9109e3d05d22beee19cf2333/LICENSE.md"
-      ]
+      ],
+      "reproduction": "examples/resource-intake/README.md",
+      "reproduced_scope": "oletools 0.60.2 RtfObjParser on one synthetic RTF OLE1 Package: filename and payload across clean and obfuscated hex; plain RTF yields no objects; non-OLE1 objdata stays is_ole false"
     },
     {
       "name": "AssetRipper",
