@@ -8,6 +8,7 @@ Use Python 3.11 with `venv`/`pip` support, JDK 17, Node.js, and an Internet conn
 resource_examples_dir="$(mktemp -d)"
 python3.11 -m venv "$resource_examples_dir/venv"
 "$resource_examples_dir/venv/bin/python" -m pip install -r examples/resource-intake/requirements.txt
+npm --prefix examples/resource-intake/whatsabi ci --ignore-scripts
 "$resource_examples_dir/venv/bin/python" examples/resource-intake/verify.py --output "$resource_examples_dir/results"
 ```
 
@@ -27,6 +28,7 @@ New-Item -ItemType Directory -Path $resourceExamplesDir | Out-Null
 py -3.11 -m venv (Join-Path $resourceExamplesDir "venv")
 $resourcePython = Join-Path $resourceExamplesDir "venv\Scripts\python.exe"
 & $resourcePython -m pip install -r examples/resource-intake/requirements.txt
+npm --prefix examples/resource-intake/whatsabi ci --ignore-scripts
 & $resourcePython examples/resource-intake/verify.py --output $resourceExamplesDir
 ```
 

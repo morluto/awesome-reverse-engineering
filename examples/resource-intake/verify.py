@@ -532,8 +532,13 @@ def verify_z3():
 
 def verify_whatsabi():
     root = SOURCE / "whatsabi"
-    if not (root / "node_modules" / "@shazow" / "whatsabi").is_dir():
-        raise SystemExit(f'Missing WhatsABI install. From {root} run `npm ci`.')
+    installed_path = root / "node_modules" / "@shazow" / "whatsabi" / "package.json"
+    if not installed_path.is_file():
+        raise SystemExit(f'Missing WhatsABI install. From the repository root run `npm --prefix {root} ci --ignore-scripts`.')
+    installed = json.loads(installed_path.read_text())["version"]
+    expected = "0.30.0"
+    if installed != expected:
+        raise SystemExit(f"Expected @shazow/whatsabi@{expected}, found {installed}. Reinstall from {root / 'package-lock.json'}.")
     completed = subprocess.run(
         ["node", "probe.mjs"], cwd=root, text=True, capture_output=True, check=True,
     )
@@ -541,6 +546,7 @@ def verify_whatsabi():
     assert report["selectors"] == ["0xc2985578", "0x0423a132"], report["selectors"]
     assert report["abi"] == []
     assert report["lone_push4"] == []
+    report["version"] = installed
     return report
 
 
@@ -658,7 +664,7 @@ def verify(work, jar, cfr_jar=None):
             keystone_result,
             {"name": "esptool", "version": "5.6.0", "result": "passed", "scope": "Offline image-info on a synthetic ESP32 image: header, segments, checksum and SHA-256; chip ID 9 is auto-detected as ESP32-S3; checksum/hash mismatches exit 0, a truncated segment exits 2, and --chip overrides the header chip ID without a warning while the checksum and hash stay valid"},
             {"name": "Z3", "version": "5.3.1.0", "result": "passed", "scope": "Synthetic 16-bit serial check: blocking-clause enumeration finds exactly the three serials a brute-force search finds; an arithmetic >> in place of LShR finds only the one with the top bit clear; model_completion adds a default value to the model"},
-            {"name": "WhatsABI", "version": "0.30.0", "result": "passed", "scope": "Hand-built EVM jump table: selectorsFromBytecode returns keccak256 prefixes of foo() and bar(uint256); abiFromBytecode is empty because the targets are not JUMPDESTs; a PUSH4 with no JUMPI is ignored"},
+            {"name": "WhatsABI", "version": whatsabi_summary["version"], "result": "passed", "scope": "Hand-built EVM jump table: selectorsFromBytecode returns keccak256 prefixes of foo() and bar(uint256); abiFromBytecode is empty because the targets are not JUMPDESTs; a PUSH4 with no JUMPI is ignored"},
         ],
         "inputs": [{"path": name, "sha256": sha256(SOURCE / name)} for name in ("BranchDemo.java", "Probe.java", "Shapes.java", "SealedProbe.java", "hbc_fixture.js", "malduck_modules/duckcfg/__init__.py", "malduck_modules/duckcfg/duckcfg.yar", "memprocfs_probe.py", "whatsabi/probe.mjs", "whatsabi/package.json", "whatsabi/package-lock.json", "verify.py", "requirements.txt")],
         "golden_hex": GOLDEN.hex(),
