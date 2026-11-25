@@ -45,6 +45,9 @@ jobs:
         run: sudo apt-get install -y --no-install-recommends libusb-1.0-0
       - name: Install pinned example dependencies
         run: python -m pip install -r examples/resource-intake/requirements.txt
+      - name: Install pinned WhatsABI example
+        run: npm ci --ignore-scripts
+        working-directory: examples/resource-intake/whatsabi
       - name: Reproduce the bounded examples
         run: python examples/resource-intake/verify.py --output "$RUNNER_TEMP/resource-intake"
       - name: Upload reproduction results

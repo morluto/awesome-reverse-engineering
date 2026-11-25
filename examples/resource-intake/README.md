@@ -1,6 +1,6 @@
 # Bounded resource examples
 
-These self-authored fixtures demonstrate Construct, Scapy, YARA-X, Vineflower, CFR, Malduck, hermes-dec, MemProcFS, boofuzz, Keystone, esptool, and Z3 in CI, plus a local PyLingual check. They are small selection examples, not upstream test suites or evidence of full platform/version support.
+These self-authored fixtures demonstrate Construct, Scapy, YARA-X, Vineflower, CFR, Malduck, hermes-dec, MemProcFS, boofuzz, Keystone, esptool, Z3, and WhatsABI in CI, plus a local PyLingual check. They are small selection examples, not upstream test suites or evidence of full platform/version support.
 
 Use Python 3.11 with `venv`/`pip` support, JDK 17, Node.js, and an Internet connection for the pinned packages, JAR, and Hermes compilers. From the repository root:
 
@@ -8,12 +8,13 @@ Use Python 3.11 with `venv`/`pip` support, JDK 17, Node.js, and an Internet conn
 resource_examples_dir="$(mktemp -d)"
 python3.11 -m venv "$resource_examples_dir/venv"
 "$resource_examples_dir/venv/bin/python" -m pip install -r examples/resource-intake/requirements.txt
+npm --prefix examples/resource-intake/whatsabi ci --ignore-scripts
 "$resource_examples_dir/venv/bin/python" examples/resource-intake/verify.py --output "$resource_examples_dir/results"
 ```
 
 The runner downloads [Vineflower 1.12.0](https://github.com/Vineflower/vineflower/releases/tag/1.12.0), [CFR 0.152](https://github.com/leibnitz27/cfr/releases/tag/0.152), and two `hermes-compiler` npm tarballs, and checks each SHA-256 before executing anything from them. An existing JAR can be supplied with `--vineflower-jar /path/to/vineflower-1.12.0.jar`; the same digest check still applies, and `--cfr-jar /path/to/cfr-0.152.jar` does the same for CFR. Failed assertions or commands fail the run; a successful run writes `results.json` and retains generated artifacts in a unique directory under the selected output path.
 
-The Hermes fixture additionally needs Node.js (CI uses Node.js 22). Its pinned compilers provide Linux x86-64, universal macOS, and Windows x86-64 binaries; native Windows/macOS execution is not part of this repository's verification.
+The Hermes fixture and the WhatsABI probe need Node.js (CI uses Node.js 22). WhatsABI is installed with `npm ci` in `examples/resource-intake/whatsabi` before the runner starts. The pinned Hermes compilers provide Linux x86-64, universal macOS, and Windows x86-64 binaries; native Windows/macOS execution is not part of this repository's verification.
 
 MemProcFS runs only on Linux x86-64, where it also needs the system `libusb-1.0` library (`sudo apt-get install libusb-1.0-0` on Debian/Ubuntu). Its pinned wheels are installed only on that host, and on other hosts the runner records MemProcFS as `skipped`.
 
@@ -27,6 +28,7 @@ New-Item -ItemType Directory -Path $resourceExamplesDir | Out-Null
 py -3.11 -m venv (Join-Path $resourceExamplesDir "venv")
 $resourcePython = Join-Path $resourceExamplesDir "venv\Scripts\python.exe"
 & $resourcePython -m pip install -r examples/resource-intake/requirements.txt
+npm --prefix examples/resource-intake/whatsabi ci --ignore-scripts
 & $resourcePython examples/resource-intake/verify.py --output $resourceExamplesDir
 ```
 
@@ -44,6 +46,7 @@ $resourcePython = Join-Path $resourceExamplesDir "venv\Scripts\python.exe"
 | Keystone 0.9.2 (with Capstone 5.0.9) | x86-64 `push rbp; mov rbp, rsp; mov eax, dword ptr [rbx + rcx*4 + 8]; xor eax, eax; pop rbp; ret` and ARM64 `mov x0, #1; add x1, x2, x3; ldr x0, [x1, #8]; b #0x1010; ret` at base `0x1000` assemble to bytes encoded by hand from the Intel SDM and Arm ARM (`554889e58b448b0831c05dc3`, `200080d24100038b200440f901000014c0035fd6`); Capstone disassembles them back to the same text, which reassembles to the same bytes; `b #0x1010` at `0x2000` becomes the backward branch `04fcff17` | Two short sequences on two ISAs, Linux x86-64 only; see the limits below |
 | esptool 5.6.0 | A 128-byte ESP32 application image built by hand from the [5.6.0 documented layout](https://raw.githubusercontent.com/espressif/esptool/e970488de2c8f1906ca9b08de681b3f9dc58b2d5/docs/en/advanced-topics/firmware-image-format.rst): entry `0x40080400`, a 16-byte DRAM segment at `0x3ffb0000` and a 32-byte IRAM segment at `0x40080400`, checksum `0xf3` (`0xEF` XOR the segment data) and an appended SHA-256 `f8d0bbc1…c9cb`; `image-info` reports the header, both segments at file offsets `0x18` and `0x30`, and a valid checksum and hash, with no device connected. A synthetic variant with chip ID 9 is detected as ESP32-S3 (header identification only); flipping one data bit gives checksum `0xf2` and hash `b1f33ee1…4147`, both reported as invalid | Offline `image-info` on one ESP32 application layout; no serial port, flashing, or bootloader images; see the limits below |
 | Z3 (z3-solver 5.3.1.0) | A synthetic 16-bit serial check written as a decompiler would show it (`((x * 0x9E37) ^ (x >> 5)) + rotl(x, 3)` with unsigned arithmetic) and target `0x002a`; brute-forcing all 65,536 inputs in plain Python finds exactly `0x1bb9`, `0x9cff`, and `0xb62c`, and Z3's bit-vector solver, asked again with each found serial blocked, returns the same three and then `unsat` | Python API, one 16-bit constraint; no SMT-LIB files, tactics, timeouts, or `unknown` results; see the limits below |
+| WhatsABI 0.30.0 | A hand-built EVM jump table whose PUSH4 immediates are the first 4 bytes of keccak256(`foo()`) and keccak256(`bar(uint256)`), `c2985578` and `0423a132`; `selectorsFromBytecode` returns both. `abiFromBytecode` returns nothing because those PUSH1 targets are not JUMPDESTs. A lone PUSH4 `deadbeef` with no JUMPI returns nothing | One jump table and one negative bytecode; no proxy resolution, signature database, or chain lookup |
 
 The branch oracle for `Probe.java` is:
 
