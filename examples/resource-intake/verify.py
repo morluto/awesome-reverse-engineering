@@ -554,6 +554,7 @@ def verify_lief():
     assert binary.header.file_type == lief.ELF.Header.FILE_TYPE.EXEC
     assert binary.entrypoint == 0x401000 and len(binary.sections) == 0 and len(binary.segments) == 1
     segment = binary.segments[0]
+    assert segment.type == lief.ELF.Segment.TYPE.LOAD
     assert segment.virtual_address == 0x401000 and int(segment.flags) == 5  # PF_X | PF_R
 
     assert lief.parse(raw=b"MZ" + blob[2:]) is None
