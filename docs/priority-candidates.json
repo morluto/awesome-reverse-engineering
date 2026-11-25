@@ -248,7 +248,7 @@
       "evidence_type": "documented",
       "task": "Unity assets and dependencies",
       "incremental_value": "Complements Cpp2IL/Il2CppDumper code and metadata analysis with asset inspection and export.",
-      "constraints": "The README claims Unity 3.5.0\u20136000.4.X, with varying support quality. The GPL-3.0 base and paid Premium features must be distinguished.",
+      "constraints": "The README claims Unity 3.5.0–6000.4.X, with varying support quality. The GPL-3.0 base and paid Premium features must be distinguished.",
       "next_check": "Export a self-built Unity project and compare assets and references against the original.",
       "sources": [
         "https://raw.githubusercontent.com/AssetRipper/AssetRipper/beeb50ee1c223e856c860caa338e5309404956a3/README.md",
