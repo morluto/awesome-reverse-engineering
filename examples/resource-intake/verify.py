@@ -540,7 +540,8 @@ def verify_unblob(work):
 
     buffer = io.BytesIO()
     with zipfile.ZipFile(buffer, "w") as archive:
-        archive.writestr("probe.txt", "UNBLOB-PROBE-1")
+        entry = zipfile.ZipInfo("probe.txt", date_time=(2020, 1, 1, 0, 0, 0))
+        archive.writestr(entry, "UNBLOB-PROBE-1")
     zip_bytes = buffer.getvalue()
     blob = b"\x00" * 40 + zip_bytes + b"\xff" * 8
     path = work / "padded.zip.bin"
