@@ -1,4 +1,4 @@
-"""Reproduce twelve narrow resource examples with independent expected outputs."""
+"""Reproduce thirteen narrow resource examples with independent expected outputs."""
 import argparse
 import ctypes.util
 from datetime import datetime, timezone
@@ -314,7 +314,7 @@ def keystone_host():
 
 
 def required_packages():
-    packages = {"construct": "2.10.70", "scapy": "2.8.0", "yara-x": "1.21.0", "hermes-dec": "0.1.8", "malduck": "4.4.1", "boofuzz": "0.4.2", "esptool": "5.6.0", "z3-solver": "5.3.1.0"}
+    packages = {"construct": "2.10.70", "scapy": "2.8.0", "yara-x": "1.21.0", "hermes-dec": "0.1.8", "malduck": "4.4.1", "boofuzz": "0.4.2", "esptool": "5.6.0", "z3-solver": "5.3.1.0", "unblob": "26.6.4"}
     if memprocfs_host():
         packages.update(MEMPROCFS_PACKAGES)
     if keystone_host():
@@ -530,6 +530,49 @@ def verify_z3():
     return {"target": hex(SERIAL_TARGET), "serials": [hex(v) for v in serials], "arithmetic_shift_serials": [hex(v) for v in naive]}
 
 
+def verify_unblob(work):
+    import io
+    import zipfile
+    from pathlib import Path
+
+    from unblob.file_utils import File, InvalidInputFormat
+    from unblob.handlers.archive.zip import ZIPHandler
+
+    buffer = io.BytesIO()
+    with zipfile.ZipFile(buffer, "w") as archive:
+        entry = zipfile.ZipInfo("probe.txt", date_time=(2020, 1, 1, 0, 0, 0))
+        archive.writestr(entry, "UNBLOB-PROBE-1")
+    zip_bytes = buffer.getvalue()
+    blob = b"\x00" * 40 + zip_bytes + b"\xff" * 8
+    path = work / "padded.zip.bin"
+    path.write_bytes(blob)
+    handler = ZIPHandler()
+    with File.from_path(Path(path)) as blob_file:
+        chunk = handler.calculate_chunk(blob_file, 40)
+    assert chunk.start_offset == 40
+    assert blob[chunk.start_offset:chunk.end_offset] == zip_bytes
+
+    empty = work / "no-eocd.bin"
+    empty.write_bytes(b"\x00" * 64)
+    try:
+        with File.from_path(Path(empty)) as blob_file:
+            handler.calculate_chunk(blob_file, 0)
+    except InvalidInputFormat:
+        pass
+    else:
+        raise AssertionError("bytes without an EOCD were accepted")
+
+    # EOCD's offset_of_cd is relative to the real start. Starting earlier rejects the same file.
+    try:
+        with File.from_path(Path(path)) as blob_file:
+            handler.calculate_chunk(blob_file, 0)
+    except InvalidInputFormat:
+        pass
+    else:
+        raise AssertionError("a ZIP was accepted from before its local header")
+    return {"zip_sha256": hashlib.sha256(zip_bytes).hexdigest(), "start": 40, "end": chunk.end_offset}
+
+
 def verify(work, jar, cfr_jar=None):
     for package, expected in required_packages().items():
         try:
@@ -617,6 +660,7 @@ def verify(work, jar, cfr_jar=None):
     boofuzz_summary = verify_boofuzz(work)
     esp_digest = verify_esptool(work)
     z3_summary = verify_z3()
+    unblob_summary = verify_unblob(work)
     keystone_result = {"name": "Keystone", "version": "0.9.2", "result": "skipped", "scope": "This check runs on Linux x86-64 only"}
     if keystone_host():
         verify_keystone()
@@ -643,6 +687,7 @@ def verify(work, jar, cfr_jar=None):
             keystone_result,
             {"name": "esptool", "version": "5.6.0", "result": "passed", "scope": "Offline image-info on a synthetic ESP32 image: header, segments, checksum and SHA-256; chip ID 9 is auto-detected as ESP32-S3; checksum/hash mismatches exit 0, a truncated segment exits 2, and --chip overrides the header chip ID without a warning while the checksum and hash stay valid"},
             {"name": "Z3", "version": "5.3.1.0", "result": "passed", "scope": "Synthetic 16-bit serial check: blocking-clause enumeration finds exactly the three serials a brute-force search finds; an arithmetic >> in place of LShR finds only the one with the top bit clear; model_completion adds a default value to the model"},
+            {"name": "unblob", "version": "26.6.4", "result": "passed", "scope": "ZIPHandler on a stdlib ZIP after 40 bytes of padding: the chunk is exactly the ZIP; no EOCD raises InvalidInputFormat; the same file is rejected when the start offset is before the local header"},
         ],
         "inputs": [{"path": name, "sha256": sha256(SOURCE / name)} for name in ("BranchDemo.java", "Probe.java", "Shapes.java", "SealedProbe.java", "hbc_fixture.js", "malduck_modules/duckcfg/__init__.py", "malduck_modules/duckcfg/duckcfg.yar", "memprocfs_probe.py", "verify.py", "requirements.txt")],
         "golden_hex": GOLDEN.hex(),
@@ -658,6 +703,7 @@ def verify(work, jar, cfr_jar=None):
         "keystone": {"base": hex(ASM_BASE), "x64": {"source": X64_SOURCE, "bytes": X64_BYTES},
                      "arm64": {"source": A64_SOURCE, "bytes": A64_BYTES, "backward_branch_at_0x2000": A64_BACKWARD_BRANCH}},
         "z3": z3_summary,
+        "unblob": unblob_summary,
         "esptool": {"image_sha256": esp_digest, "entry": hex(ESP_ENTRY), "checksum": hex(ESP_CHECKSUM), "validation_hash": ESP_DIGEST,
                     "corrupt_checksum": hex(ESP_CORRUPT_CHECKSUM), "corrupt_validation_hash": ESP_CORRUPT_DIGEST},
     }
