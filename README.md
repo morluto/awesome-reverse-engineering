@@ -259,7 +259,7 @@ Run samples only in isolated, disposable environments, and follow your organizat
 - [ripcord](https://github.com/DavidClawson/ripcord) - Ghidra-based firmware-analysis pipeline producing queryable Parquet tables for DuckDB; requires Ghidra 11.2+ with PyGhidra and Python 3.11+, with optional simulation tooling.
 - [sigrok](https://github.com/sigrokproject) - Signal analysis tools and protocol decoders for logic analyzers and related hardware.
 - [UEFITool](https://github.com/LongSoft/UEFITool) - Parses UEFI firmware structures and extracts or replaces modules.
-- [unblob](https://github.com/onekey-sec/unblob) - Extracts nested archives, compressed data, and filesystem images from firmware and other files.
+- [unblob](https://github.com/onekey-sec/unblob) - Extracts nested archives, compressed data, and filesystem images from firmware and other files; a ZIP handler needs the chunk start at the local header, not merely an end-of-central-directory record later in the file.
 - [usb-rea](https://github.com/emirmrkaljevic/usb-rea) - Infers USB protocol fields, counters, checksums, and multi-packet commands from captures of labelled actions, with frame-number evidence, and generates pyusb driver code and Wireshark Lua dissectors; requires Python 3.10+, with usbmon plus dumpcap/tshark on Linux or USBPcap on Windows for capture, and remains alpha without physical-device validation.
 
 ## File formats
