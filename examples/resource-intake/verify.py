@@ -1,4 +1,4 @@
-"""Reproduce twelve narrow resource examples with independent expected outputs."""
+"""Reproduce thirteen narrow resource examples with independent expected outputs."""
 import argparse
 import ctypes.util
 from datetime import datetime, timezone
@@ -314,7 +314,7 @@ def keystone_host():
 
 
 def required_packages():
-    packages = {"construct": "2.10.70", "scapy": "2.8.0", "yara-x": "1.21.0", "hermes-dec": "0.1.8", "malduck": "4.4.1", "boofuzz": "0.4.2", "esptool": "5.6.0", "z3-solver": "5.3.1.0"}
+    packages = {"construct": "2.10.70", "scapy": "2.8.0", "yara-x": "1.21.0", "hermes-dec": "0.1.8", "malduck": "4.4.1", "boofuzz": "0.4.2", "esptool": "5.6.0", "z3-solver": "5.3.1.0", "lief": "0.16.6"}
     if memprocfs_host():
         packages.update(MEMPROCFS_PACKAGES)
     if keystone_host():
@@ -530,6 +530,39 @@ def verify_z3():
     return {"target": hex(SERIAL_TARGET), "serials": [hex(v) for v in serials], "arithmetic_shift_serials": [hex(v) for v in naive]}
 
 
+def elf64_exec(entry=0x401000):
+    """One LOAD segment, no section headers. The entry sits on the same page as the file base."""
+    filesz = 64 + 56
+    header = struct.pack(
+        "<16sHHIQQQIHHHHHH",
+        b"\x7fELF" + bytes([2, 1, 1]) + b"\x00" * 9,
+        2, 62, 1, entry, 64, 0, 0,
+        64, 56, 1, 64, 0, 0,
+    )
+    vaddr = entry & ~0xFFF
+    program = struct.pack("<IIQQQQQQ", 1, 5, 0, vaddr, vaddr, filesz, filesz, 0x1000)
+    return header + program
+
+
+def verify_lief():
+    import lief
+
+    blob = elf64_exec()
+    binary = lief.parse(raw=blob)
+    assert binary is not None and type(binary).__name__ == "Binary"
+    assert binary.header.machine_type == lief.ELF.ARCH.X86_64
+    assert binary.header.file_type == lief.ELF.Header.FILE_TYPE.EXEC
+    assert binary.entrypoint == 0x401000 and len(binary.sections) == 0 and len(binary.segments) == 1
+    segment = binary.segments[0]
+    assert segment.virtual_address == 0x401000 and int(segment.flags) == 5  # PF_X | PF_R
+
+    assert lief.parse(raw=b"MZ" + blob[2:]) is None
+    # A short file still returns a binary. The missing fields are zero, not an error result.
+    short = lief.parse(raw=blob[:20])
+    assert short is not None and short.entrypoint == 0 and len(short.segments) == 0
+    return {"sha256": hashlib.sha256(blob).hexdigest(), "entry": hex(binary.entrypoint)}
+
+
 def verify(work, jar, cfr_jar=None):
     for package, expected in required_packages().items():
         try:
@@ -617,6 +650,7 @@ def verify(work, jar, cfr_jar=None):
     boofuzz_summary = verify_boofuzz(work)
     esp_digest = verify_esptool(work)
     z3_summary = verify_z3()
+    lief_summary = verify_lief()
     keystone_result = {"name": "Keystone", "version": "0.9.2", "result": "skipped", "scope": "This check runs on Linux x86-64 only"}
     if keystone_host():
         verify_keystone()
@@ -643,6 +677,7 @@ def verify(work, jar, cfr_jar=None):
             keystone_result,
             {"name": "esptool", "version": "5.6.0", "result": "passed", "scope": "Offline image-info on a synthetic ESP32 image: header, segments, checksum and SHA-256; chip ID 9 is auto-detected as ESP32-S3; checksum/hash mismatches exit 0, a truncated segment exits 2, and --chip overrides the header chip ID without a warning while the checksum and hash stay valid"},
             {"name": "Z3", "version": "5.3.1.0", "result": "passed", "scope": "Synthetic 16-bit serial check: blocking-clause enumeration finds exactly the three serials a brute-force search finds; an arithmetic >> in place of LShR finds only the one with the top bit clear; model_completion adds a default value to the model"},
+            {"name": "LIEF", "version": "0.16.6", "result": "passed", "scope": "Hand-built ELF64 EXEC with one LOAD segment and no section headers; wrong magic returns None; a 20-byte prefix still returns a binary with entry 0 and no segments"},
         ],
         "inputs": [{"path": name, "sha256": sha256(SOURCE / name)} for name in ("BranchDemo.java", "Probe.java", "Shapes.java", "SealedProbe.java", "hbc_fixture.js", "malduck_modules/duckcfg/__init__.py", "malduck_modules/duckcfg/duckcfg.yar", "memprocfs_probe.py", "verify.py", "requirements.txt")],
         "golden_hex": GOLDEN.hex(),
@@ -658,6 +693,7 @@ def verify(work, jar, cfr_jar=None):
         "keystone": {"base": hex(ASM_BASE), "x64": {"source": X64_SOURCE, "bytes": X64_BYTES},
                      "arm64": {"source": A64_SOURCE, "bytes": A64_BYTES, "backward_branch_at_0x2000": A64_BACKWARD_BRANCH}},
         "z3": z3_summary,
+        "lief": lief_summary,
         "esptool": {"image_sha256": esp_digest, "entry": hex(ESP_ENTRY), "checksum": hex(ESP_CHECKSUM), "validation_hash": ESP_DIGEST,
                     "corrupt_checksum": hex(ESP_CORRUPT_CHECKSUM), "corrupt_validation_hash": ESP_CORRUPT_DIGEST},
     }
